@@ -39,7 +39,9 @@
         { "name": "size-pqclean768-Os", "displayName": "5b size: PQClean ML-KEM-768 -Os", "inherits": "Release", "cacheVariables": { "BENCH_ALGO": "PQCLEAN_768", "PQC_OPT_LEVEL": "-Os" } },
 
         { "name": "opt-O2", "displayName": "5b timing: all algorithms, PQClean -O2", "inherits": "Release", "cacheVariables": { "BENCH_ALGO": "ALL", "PQC_OPT_LEVEL": "-O2" } },
-        { "name": "opt-Os", "displayName": "5b timing: all algorithms, PQClean -Os", "inherits": "Release", "cacheVariables": { "BENCH_ALGO": "ALL", "PQC_OPT_LEVEL": "-Os" } }
+        { "name": "opt-Os", "displayName": "5b timing: all algorithms, PQClean -Os", "inherits": "Release", "cacheVariables": { "BENCH_ALGO": "ALL", "PQC_OPT_LEVEL": "-Os" } },
+
+        { "name": "link",   "displayName": "LINK: ML-KEM-768 (PQClean -Os) + AES-256-GCM with the PC", "inherits": "Release", "cacheVariables": { "APP_MODE": "LINK", "BENCH_ALGO": "NONE", "PQC_OPT_LEVEL": "-Os" } }
     ],
     "buildPresets": [
         {

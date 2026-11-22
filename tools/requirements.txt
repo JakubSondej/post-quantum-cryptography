@@ -1,0 +1,4 @@
+# PC side of the qlink protocol (tools/pc_link.py)
+pyserial>=3.5
+cryptography>=42
+kyber-py>=1.0

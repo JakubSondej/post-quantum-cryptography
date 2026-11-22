@@ -41,6 +41,31 @@ void pqc_rng_reset(void)
   rng_init();
 }
 
+/* Mix additional input into the seed: seed = SHAKE128(seed || data).
+   Used by the communication mode (kem_link.c) with timing jitter (DWT cycle
+   counter at UART byte arrival) and the peer's nonce, so session keys are not
+   identical after every reset. This is still NOT a proper entropy source -
+   a production device needs a TRNG. The benchmark never calls this, so its
+   runs stay deterministic. */
+void pqc_rng_mix(const uint8_t *data, size_t n)
+{
+  uint8_t in[RNG_SEED_LEN + 64u];
+
+  if (!rng_ready)
+  {
+    rng_init();
+  }
+  while (n > 0u)
+  {
+    size_t chunk = (n > 64u) ? 64u : n;
+    memcpy(in, rng_seed, RNG_SEED_LEN);
+    memcpy(in + RNG_SEED_LEN, data, chunk);
+    shake128(rng_seed, RNG_SEED_LEN, in, RNG_SEED_LEN + chunk);
+    data += chunk;
+    n -= chunk;
+  }
+}
+
 int randombytes(uint8_t *output, size_t n)
 {
   uint8_t in[RNG_SEED_LEN + 4u];

@@ -58,6 +58,25 @@ Presety (`CMakePresets.json`):
 Opcje CMake: `BENCH_ALGO` (`ALL`, `NONE`, `PQCLEAN_512`, `PQCLEAN_768`, `CMOX_KEM_512`,
 `CMOX_KEM_768`, `CMOX_P256`, `CMOX_X25519`) i `PQC_OPT_LEVEL` (`-O3`, `-O2`, `-Os`).
 
+## Tryb komunikacji z PC (LINK)
+
+Firmware `APP_MODE=LINK` (preset `link`): wymiana klucza **ML-KEM-768 (PQClean -Os)** z PC przez
+UART (ST-LINK VCP, 115200), klucze sesji HKDF-SHA256, wiadomości **AES-256-GCM** (CMOX).
+Opis protokołu (ramki, role, wyprowadzanie kluczy, nonce, replay) - nagłówek `Core/Src/kem_link.c`.
+
+```bash
+cube cmake -S . --preset link
+cube cmake --build build/link
+STM32_Programmer_CLI -c port=SWD -w build/link/quantum.elf -v -rst
+python -m pip install --user -r tools/requirements.txt
+python tools/pc_link.py --port COM20                 # czat; /role pc|mcu, /rekey, /quit
+python tools/pc_link.py --port COM20 --selftest 10   # test + tests/link/*.csv
+```
+
+Role: `pc` - PC generuje parę kluczy, STM32 enkapsuluje; `mcu` - STM32 generuje parę kluczy i dekapsuluje.
+Komendy po stronie STM32: `led on`, `led off`, `stats`, `uid` (inne wiadomości wracają jako echo).
+Brak uwierzytelnienia stron (podpisów) - ochrona przed podsłuchem, nie przed aktywnym MITM.
+
 ## Raport
 
 ```bash

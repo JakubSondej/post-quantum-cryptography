@@ -85,9 +85,22 @@ target_compile_options(pqclean PUBLIC
 
 # Add sources to executable
 target_sources(${CMAKE_PROJECT_NAME} PRIVATE
-    Core/Src/bench.c        # ML-KEM vs ECDH benchmark
-    Core/Src/pqc_rng.c      # randombytes() (deterministic, bench only)
+    Core/Src/bench.c        # ML-KEM vs ECDH benchmark (+ heap wrappers)
+    Core/Src/pqc_rng.c      # randombytes() (SHAKE128 DRBG, no TRNG on F446)
+    Core/Src/kem_link.c     # ML-KEM-768 + AES-256-GCM link with the PC
 )
+
+# ---------------------------------------------------------------------------
+# Application: BENCH = measurements (bench.c), LINK = secure link with the PC
+# (kem_link.c + tools/pc_link.py).
+# ---------------------------------------------------------------------------
+set(APP_MODE "BENCH" CACHE STRING "Firmware application: BENCH or LINK")
+set_property(CACHE APP_MODE PROPERTY STRINGS BENCH LINK)
+if(NOT APP_MODE MATCHES "^(BENCH|LINK)$")
+    message(FATAL_ERROR "APP_MODE must be BENCH or LINK")
+endif()
+target_compile_definitions(${CMAKE_PROJECT_NAME} PRIVATE APP_MODE_${APP_MODE}=1)
+message(STATUS "Application mode: ${APP_MODE}")
 
 # Add include paths
 target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE

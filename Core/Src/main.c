@@ -25,6 +25,7 @@
 /* USER CODE BEGIN Includes */
 #include <stdio.h>
 #include "bench.h"
+#include "kem_link.h"
 
 /* USER CODE END Includes */
 
@@ -98,9 +99,15 @@ int main(void)
   MX_GPIO_Init();
   MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
+#if defined(APP_MODE_LINK)
+  /* ML-KEM-768 key exchange + AES-256-GCM messages with the PC
+     (tools/pc_link.py); never returns. */
+  kem_link_run();
+#else
   /* Run the ML-KEM / ECDH benchmark once; press the black RESET button
      on the Nucleo to run it again. */
   bench_run();
+#endif
 
   /* USER CODE END 2 */
 
@@ -111,9 +118,9 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-    /* Benchmark finished: blink LD2 */
-    HAL_GPIO_TogglePin(LD2_GPIO_Port, LD2_Pin);
-    HAL_Delay(500);
+   // /* Benchmark finished: blink LD2 */
+   // HAL_GPIO_TogglePin(LD2_GPIO_Port, LD2_Pin);
+   // HAL_Delay(500);
   }
   /* USER CODE END 3 */
 }
