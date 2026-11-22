@@ -1,0 +1,36 @@
+Wszystkie testy przechodzą, sekrety są zgodne w sześciu grupach, a pomiary v3 i v3.1 dają identyczne cykle. Teraz sprawdzam podział Flash na biblioteki i to, czy CMOX ma szybszy wariant ML-KEM.
+
+Benchmark działa w całości: wszystkie sześć grup daje zgodne wspólne sekrety (RESULT: ALL OK). Przebiegi v3 i v3.1 są identyczne co do pojedynczego cyklu, więc pomiar jest w pełni powtarzalny. Wynika to z deterministycznego RNG i wyłączonych przerwań podczas pomiaru, i warto to napisać w pracy.
+
+Wyniki: STM32F446RE, 168 MHz, cache ART włączony, średnio z 50 powtórzeń
+
+Czas pojedynczych operacji [ms]
+
+Algorytm	keygen	encaps / ECDH	decaps	Szczyt stosu
+PQClean ML-KEM-512	5,95	6,53	7,63	9,6 KB
+PQClean ML-KEM-768	9,66	10,65	12,18	14,5 KB
+CMOX ML-KEM-512	4,66	13,98	15,57	4,7 KB
+CMOX ML-KEM-768	7,56	20,13	22,33	5,6 KB
+CMOX ECDH P-256	12,67	28,39	–	0,7 KB + 1,6 KB bufora
+CMOX X25519	25,74	25,56	–	0,7 KB + 0,5 KB bufora
+
+Pełne uzgodnienie klucza (procesor obu stron razem)
+
+	Czas	Przesyłane dane
+PQClean ML-KEM-512	20,1 ms	1568 B (pk + ct)
+PQClean ML-KEM-768	32,5 ms	2272 B
+CMOX ML-KEM-512	34,2 ms	1568 B
+CMOX ML-KEM-768	50,0 ms	2272 B
+ECDH P-256 (2 × keygen + 2 × ECDH)	82,1 ms	128 B
+X25519	102,6 ms	64 B
+Wnioski do pracy
+ML-KEM jest szybszy od klasycznego ECDH. ML-KEM-512 z PQClean uzgadnia klucz 4× szybciej niż P-256, a ML-KEM-768 2,5× szybciej. Strona odpowiadająca (encaps 6,5 ms wobec keygen + ECDH 41 ms) zyskuje nawet ponad 6×. Pod względem czasu procesora PQC nie jest przeszkodą dla F446RE.
+Słabym punktem jest rozmiar danych, nie obliczenia. ML-KEM przesyła 12–35× więcej bajtów niż ECDH. W łączach IoT o małych ramkach (LoRa, BLE) wymaga to dzielenia na fragmenty i zużywa energię radia, która w IoT często przewyższa koszt obliczeń.
+Kompromis szybkość–pamięć między bibliotekami. CMOX generuje klucz trochę szybciej, ale enkapsulację i dekapsulację robi około 2× wolniej niż PQClean. W zamian zużywa 2,6× mniej stosu (5,6 KB wobec 14,5 KB dla ML-KEM-768). Na układzie ze 128 KB RAM oba warianty się mieszczą. Na małym układzie z 20–32 KB RAM wygrałby CMOX. Sprawdziłem w nagłówkach CMOX, że przełącznik CMOX_PQC_FAST/SMALL dotyczy tylko ML-DSA, więc w tej wersji nie ma szybszego wariantu ML-KEM do przetestowania.
+Porównanie z literaturą. wolfSSL z asemblerem M4 (F439, 168 MHz) osiąga 4,0 / 3,8 / 5,1 ms dla ML-KEM-512. PQClean w czystym C jest od niego tylko 1,5–1,7× wolniejszy. Wynik CMOX jest spójny z badaniem na H563, gdzie implementacja ST była kilkukrotnie wolniejsza od otwartych.
+Stałość czasu. Encaps i decaps mają identyczną liczbę cykli we wszystkich 50 powtórzeniach (min = max). Rozrzut ±2% występuje tylko w keygen, z próbkowania odrzucającego macierzy A, która jest jawna. To dobra przesłanka stałoczasowości, ale nie dowód.
+Zastrzeżenia metodyczne (warto je podać)
+Sterta 200 B w wierszach CMOX pochodzi z mojego randombytes() (SHAKE z PQClean). Sam CMOX nie używa sterty, co widać po decaps = 0 B.
+Czasy keygen i encaps zawierają generowanie losowości przez mój deterministyczny generator. Robią to tak samo obie biblioteki, więc porównanie jest uczciwe.
+Flash: CMOX zajmuje łącznie 36,2 KB (ECC, Keccak i ML-KEM razem), a PQClean 16,3 KB (ML-KEM-512 i 768 ze wspólnym SHAKE). Kosztu pojedynczego algorytmu z tego nie wyczytamy. Do tego potrzebne są osobne buildy z Etapu 5.
+

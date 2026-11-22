@@ -1,0 +1,93 @@
+Co wynika z linków
+PQClean jest zarchiwizowany od 4.08.2026. Jako następcę ML-KEM wskazuje mlkem-native (github.com/pq-code-package/mlkem-native). Kod PQClean nadal działa i jest prosty, więc nadaje się do pracy, tylko zaznacz ten status.
+Benchmark wolfSSL był robiony na płytce F439ZI przy 168 MHz, z optymalizacjami w asemblerze. Średnie czasy:
+Algorytm	Generowanie klucza	Enkapsulacja	Dekapsulacja
+ML-KEM-512	4,0 ms	3,8 ms	5,1 ms
+ML-KEM-768	6,5 ms	6,6 ms	8,3 ms
+
+ECDH P-256 dla porównania: generowanie klucza 5,6 ms, uzgodnienie klucza 11,8 ms. RAM i Flash nie są podane. To dobry punkt odniesienia dla Twoich wyników.
+
+Strony ST (X-CUBE-PQC i wiki CryptoLib) nie wczytały się (przekroczony czas). Sprawdź je ręcznie w przeglądarce: czy X-CUBE-PQC obsługuje Cortex-M4 / serię F4 i czy wymaga logowania (prawdopodobnie jest to biblioteka binarna).
+Plan działania
+Etap 0: przygotowanie (około 15 min)
+W terminalu VS Code sprawdź opcje wdrożenia skilli:
+cube agentic-ai list-supported-targets
+cube agentic-ai project-deploy-installed --help
+Opcjonalnie potwierdź sam brak wsparcia płytki. Ta komenda może działać kilka minut, bo odświeża katalog:
+cube cube-agentic-ai-mx2-skill --resolve-board NUCLEO-F446RE
+Etap 1: projekt w STM32CubeMX 6.18
+Wybierz Board Selector → NUCLEO-F446RE i zgódź się na domyślne ustawienia peryferiów.
+Zegar (RCC): ustaw HSE na BYPASS (8 MHz z MCO ST-LINK), PLL na 168 MHz dla porównania z wolfSSL, później dodatkowo pomiar przy 180 MHz.
+USART2 (PA2/PA3, port VCP przez ST-LINK) ustaw na 115200 8N1. Tędy wyślesz wyniki.
+SYS → Debug: Serial Wire.
+Opcjonalnie TIM2 (32-bitowy) jako drugi zegar do kontroli pomiarów. Główny pomiar zrobisz licznikiem DWT CYCCNT, który włącza się w kodzie, nie w CubeMX.
+Project Manager:
+nazwa quantum, lokalizacja C:\work;
+Toolchain: CMake;
+Linker Settings: stos (Minimum Stack Size) ustaw na co najmniej 0x8000, bo ML-KEM-768 zużywa dużo stosu.
+Kliknij Generate Code.
+Etap 2: VS Code i wdrożenie Agentic AI
+W VS Code otwórz C:\work\quantum. Rozszerzenie STM32 zaproponuje import lub konfigurację projektu CMake. Zaakceptuj.
+Wdróż skille do projektu komendą project-deploy-installed z flagami dla VS Code i Claude Code (dokładne wartości poda Ci list-supported-targets). Powinny powstać .mcp.json i .claude/skills/.
+Uruchom ponownie Claude Code w VS Code i sprawdź serwery poleceniem /mcp.
+Pierwszy test agenta, na przykład:
+
+„Używając skilli ST, dodaj printf przez USART2 i wypisz HAL_RCC_GetSysClockFreq(). Zbuduj projekt.”
+
+Wgraj program (przez skill prog lub przez debugger) i sprawdź wyjście w terminalu szeregowym.
+Etap 3: biblioteki kryptograficzne (w folderze Middlewares/ lub third_party/)
+ML-KEM: jedno z dwóch:
+mlkem-native: aktualny następca, jeden kod dla wszystkich poziomów (512 i 768) wybieranych konfiguracją;
+PQClean crypto_kem/ml-kem-512/clean i ml-kem-768/clean plus z common/ pliki fips202.c i randombytes.h.
+Bonus: pqm4 (github.com/mupq/pqm4) ma wersje zoptymalizowane pod M4 w asemblerze (m4fspeed, m4fstack). Pozwala to porównać kod referencyjny z zoptymalizowanym.
+ECDH: jedno z trzech:
+mbedTLS 3.6 LTS (P-256, X25519);
+micro-ecc (mały, tylko P-256);
+X-CUBE-CRYPTOLIB (CMOX) od ST (binarna, wymaga logowania).
+randombytes(): generator SHAKE128 z ziarnem z UID układu, z komentarzem „tylko do benchmarku”.
+Dopisz źródła do CMakeLists.txt. Tu przyda się agent i skill build, na przykład:
+
+„Dodaj katalog third_party/mlkem do CMake i zbuduj.”
+
+Etap 4: kod do pomiarów (bench.c)
+Włącz licznik DWT->CYCCNT (CoreDebug→DEMCR TRCENA, DWT→CTRL CYCCNTENA).
+Każdą operację wykonaj N=100 razy, zapisz min, medianę i max w cyklach, przelicz na µs. Na końcu sprawdź, że obie strony mają ten sam wspólny sekret.
+Zestawienie operacji na potrzeby porównania z ECDH:
+generowanie klucza KEM ↔ generowanie pary kluczy ECDH;
+enkapsulacja ↔ efemeryczna para kluczy + uzgodnienie;
+dekapsulacja ↔ uzgodnienie.
+Stos: wypełnij obszar stosu wzorcem 0xA5 i po operacji sprawdź, ile zostało nadpisane.
+Sterta: dla mbedTLS policz alokacje przez własne calloc i free.
+Wyniki wypisuj jako CSV przez UART.
+Etap 5: pomiary RAM i Flash
+Zbuduj kilka wariantów (flagi CMake):
+pusty projekt,
++ML-KEM-512,
++ML-KEM-768,
++ECDH.
+Różnice text, data i bss z arm-none-eabi-size pokażą koszt każdej biblioteki. Masz też zainstalowane rozszerzenie Build Analyzer, które pokazuje te dane z pliku .map.
+Dodaj -fstack-usage jako analizę statyczną obok pomiaru wypełnienia stosu.
+Testy dodatkowe:
+-Os kontra -O2 / -O3;
+168 kontra 180 MHz;
+włączony i wyłączony cache ART.
+Etap 6: wyniki
+Tabele: czas (ms), cykle, stos, Flash, RAM.
+Rozmiary przesyłanych danych:
+Algorytm	Klucz publiczny	Szyfrogram
+ML-KEM-512	800 B	768 B
+ML-KEM-768	1184 B	1088 B
+X25519	32 B	–
+P-256	65 B	–
+Porównaj z wolfSSL i pqm4.
+Wnioski: czy wystarczy 128 KB RAM, jaki jest koszt transmisji w IoT i jaki jest koszt energetyczny (czas CPU × prąd).
+
+Kolejność dla nauki: dopilnuj, żeby etapy 1–2 działały (UART i wgrywanie), zanim dołożysz kryptografię. Wtedy błędy z bibliotek nie pomieszają się z błędami konfiguracji.
+
+Źródła:
+
+STM32Cube for Agentic AI – Supported IDEs and AI coding agents
+ST introduces AI-assisted STM32 development tools
+EE Times – STM32 roadmap for AI
+PQClean
+wolfSSL – benchmarki ML-KEM na STM32

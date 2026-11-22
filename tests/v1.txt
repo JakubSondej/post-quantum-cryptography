@@ -1,0 +1,200 @@
+
+==================================================================
+ PQC benchmark  STM32F446RE  (ML-KEM vs ECDH)
+==================================================================
+ SYSCLK          : 168 MHz
+ Flash latency   : 5 WS, prefetch on, I-cache on, D-cache on
+ Compiler        : GCC 14.3.1 20250623
+ PQClean opt     : -O3   (bench harness: build type)
+ CMOX            : libSTM32Cryptographic_CM4.a (X-CUBE-CRYPTOLIB v5)
+ Iterations      : 50 per operation
+ RNG             : SHAKE128 DRBG seeded from UID (NOT SECURE, bench only)
+
+ Sizes [B]       :      pk     sk     ct/peer-pub  ss
+   ML-KEM-512    :     800   1632      768       32
+   ML-KEM-768    :    1184   2400     1088       32
+   ECDH P-256    :      64     32       64       32
+   X25519        :      32     32       32       32
+
+lib      algorithm   op         cyc_min    cyc_avg    cyc_max     avg_us    stack   heap   wbuf
+CSV,lib,alg,op,iters,cyc_min,cyc_avg,cyc_max,mhz,stack_B,heap_B,wbuf_B,err
+
+==================================================================
+ PQC benchmark  STM32F446RE  (ML-KEM vs ECDH)
+==================================================================
+ SYSCLK          : 168 MHz
+ Flash latency   : 5 WS, prefetch on, I-cache on, D-cache on
+ Compiler        : GCC 14.3.1 20250623
+ PQClean opt     : -O3   (bench harness: build type)
+ CMOX            : libSTM32Cryptographic_CM4.a (X-CUBE-CRYPTOLIB v5)
+ Iterations      : 50 per operation
+ RNG             : SHAKE128 DRBG seeded from UID (NOT SECURE, bench only)
+
+ Sizes [B]       :      pk     sk     ct/peer-pub  ss
+   ML-KEM-512    :     800   1632      768       32
+   ML-KEM-768    :    1184   2400     1088       32
+   ECDH P-256    :      64     32       64       32
+   X25519        :      32     32       32       32
+
+lib      algorithm   op         cyc_min    cyc_avg    cyc_max     avg_us    stack   heap   wbuf
+CSV,lib,alg,op,iters,cyc_min,cyc_avg,cyc_max,mhz,stack_B,heap_B,wbuf_B,err
+
+==================================================================
+ PQC benchmark  STM32F446RE  (ML-KEM vs ECDH)
+==================================================================
+ SYSCLK          : 168 MHz
+ Flash latency   : 5 WS, prefetch on, I-cache on, D-cache on
+ Compiler        : GCC 14.3.1 20250623
+ PQClean opt     : -O3   (bench harness: build type)
+ CMOX            : libSTM32Cryptographic_CM4.a (X-CUBE-CRYPTOLIB v5)
+ Iterations      : 50 per operation
+ RNG             : SHAKE128 DRBG seeded from UID (NOT SECURE, bench only)
+
+ Sizes [B]       :      pk     sk     ct/peer-pub  ss
+   ML-KEM-512    :     800   1632      768       32
+   ML-KEM-768    :    1184   2400     1088       32
+   ECDH P-256    :      64     32       64       32
+   X25519        :      32     32       32       32
+
+lib      algorithm   op         cyc_min    cyc_avg    cyc_max     avg_us    stack   heap   wbuf
+CSV,lib,alg,op,iters,cyc_min,cyc_avg,cyc_max,mhz,stack_B,heap_B,wbuf_B,err
+
+==================================================================
+ PQC benchmark  STM32F446RE  (ML-KEM vs ECDH)
+==================================================================
+ SYSCLK          : 168 MHz
+ Flash latency   : 5 WS, prefetch on, I-cache on, D-cache on
+ Compiler        : GCC 14.3.1 20250623
+ PQClean opt     : -O3   (bench harness: build type)
+ CMOX            : libSTM32Cryptographic_CM4.a (X-CUBE-CRYPTOLIB v5)
+ Iterations      : 50 per operation
+ RNG             : SHAKE128 DRBG seeded from UID (NOT SECURE, bench only)
+
+ Sizes [B]       :      pk     sk     ct/peer-pub  ss
+   ML-KEM-512    :     800   1632      768       32
+   ML-KEM-768    :    1184   2400     1088       32
+   ECDH P-256    :      64     32       64       32
+   X25519        :      32     32       32       32
+
+lib      algorithm   op         cyc_min    cyc_avg    cyc_max     avg_us    stack   heap   wbuf
+CSV,lib,alg,op,iters,cyc_min,cyc_avg,cyc_max,mhz,stack_B,heap_B,wbuf_B,err
+
+==================================================================
+ PQC benchmark  STM32F446RE  (ML-KEM vs ECDH)
+==================================================================
+ SYSCLK          : 168 MHz
+ Flash latency   : 5 WS, prefetch on, I-cache on, D-cache on
+ Compiler        : GCC 14.3.1 20250623
+ PQClean opt     : -O3   (bench harness: build type)
+ CMOX            : libSTM32Cryptographic_CM4.a (X-CUBE-CRYPTOLIB v5)
+ Iterations      : 50 per operation
+ RNG             : SHAKE128 DRBG seeded from UID (NOT SECURE, bench only)
+
+ Sizes [B]       :      pk     sk     ct/peer-pub  ss
+   ML-KEM-512    :     800   1632      768       32
+   ML-KEM-768    :    1184   2400     1088       32
+   ECDH P-256    :      64     32       64       32
+   X25519        :      32     32       32       32
+
+lib      algorithm   op         cyc_min    cyc_avg    cyc_max     avg_us    stack   heap   wbuf
+CSV,lib,alg,op,iters,cyc_min,cyc_avg,cyc_max,mhz,stack_B,heap_B,wbuf_B,err
+
+==================================================================
+ PQC benchmark  STM32F446RE  (ML-KEM vs ECDH)
+==================================================================
+ SYSCLK          : 168 MHz
+ Flash latency   : 5 WS, prefetch on, I-cache on, D-cache on
+ Compiler        : GCC 14.3.1 20250623
+ PQClean opt     : -O3   (bench harness: build type)
+ CMOX            : libSTM32Cryptographic_CM4.a (X-CUBE-CRYPTOLIB v5)
+ Iterations      : 50 per operation
+ RNG             : SHAKE128 DRBG seeded from UID (NOT SECURE, bench only)
+
+ Sizes [B]       :      pk     sk     ct/peer-pub  ss
+   ML-KEM-512    :     800   1632      768       32
+   ML-KEM-768    :    1184   2400     1088       32
+   ECDH P-256    :      64     32       64       32
+   X25519        :      32     32       32       32
+
+lib      algorithm   op         cyc_min    cyc_avg    cyc_max     avg_us    stack   heap   wbuf
+CSV,lib,alg,op,iters,cyc_min,cyc_avg,cyc_max,mhz,stack_B,heap_B,wbuf_B,err
+
+==================================================================
+ PQC benchmark  STM32F446RE  (ML-KEM vs ECDH)
+==================================================================
+ SYSCLK          : 168 MHz
+ Flash latency   : 5 WS, prefetch on, I-cache on, D-cache on
+ Compiler        : GCC 14.3.1 20250623
+ PQClean opt     : -O3   (bench harness: build type)
+ CMOX            : libSTM32Cryptographic_CM4.a (X-CUBE-CRYPTOLIB v5)
+ Iterations      : 50 per operation
+ RNG             : SHAKE128 DRBG seeded from UID (NOT SECURE, bench only)
+
+ Sizes [B]       :      pk     sk     ct/peer-pub  ss
+   ML-KEM-512    :     800   1632      768       32
+   ML-KEM-768    :    1184   2400     1088       32
+   ECDH P-256    :      64     32       64       32
+   X25519        :      32     32       32       32
+
+lib      algorithm   op         cyc_min    cyc_avg    cyc_max     avg_us    stack   heap   wbuf
+CSV,lib,alg,op,iters,cyc_min,cyc_avg,cyc_max,mhz,stack_B,heap_B,wbuf_B,err
+
+==================================================================
+ PQC benchmark  STM32F446RE  (ML-KEM vs ECDH)
+==================================================================
+ SYSCLK          : 168 MHz
+ Flash latency   : 5 WS, prefetch on, I-cache on, D-cache on
+ Compiler        : GCC 14.3.1 20250623
+ PQClean opt     : -O3   (bench harness: build type)
+ CMOX            : libSTM32Cryptographic_CM4.a (X-CUBE-CRYPTOLIB v5)
+ Iterations      : 50 per operation
+ RNG             : SHAKE128 DRBG seeded from UID (NOT SECURE, bench only)
+
+ Sizes [B]       :      pk     sk     ct/peer-pub  ss
+   ML-KEM-512    :     800   1632      768       32
+   ML-KEM-768    :    1184   2400     1088       32
+   ECDH P-256    :      64     32       64       32
+   X25519        :      32     32       32       32
+
+lib      algorithm   op         cyc_min    cyc_avg    cyc_max     avg_us    stack   heap   wbuf
+CSV,lib,alg,op,iters,cyc_min,cyc_avg,cyc_max,mhz,stack_B,heap_B,wbuf_B,err
+
+==================================================================
+ PQC benchmark  STM32F446RE  (ML-KEM vs ECDH)
+==================================================================
+ SYSCLK          : 168 MHz
+ Flash latency   : 5 WS, prefetch on, I-cache on, D-cache on
+ Compiler        : GCC 14.3.1 20250623
+ PQClean opt     : -O3   (bench harness: build type)
+ CMOX            : libSTM32Cryptographic_CM4.a (X-CUBE-CRYPTOLIB v5)
+ Iterations      : 50 per operation
+ RNG             : SHAKE128 DRBG seeded from UID (NOT SECURE, bench only)
+
+ Sizes [B]       :      pk     sk     ct/peer-pub  ss
+   ML-KEM-512    :     800   1632      768       32
+   ML-KEM-768    :    1184   2400     1088       32
+   ECDH P-256    :      64     32       64       32
+   X25519        :      32     32       32       32
+
+lib      algorithm   op         cyc_min    cyc_avg    cyc_max     avg_us    stack   heap   wbuf
+CSV,lib,alg,op,iters,cyc_min,cyc_avg,cyc_max,mhz,stack_B,heap_B,wbuf_B,err
+
+==================================================================
+ PQC benchmark  STM32F446RE  (ML-KEM vs ECDH)
+==================================================================
+ SYSCLK          : 168 MHz
+ Flash latency   : 5 WS, prefetch on, I-cache on, D-cache on
+ Compiler        : GCC 14.3.1 20250623
+ PQClean opt     : -O3   (bench harness: build type)
+ CMOX            : libSTM32Cryptographic_CM4.a (X-CUBE-CRYPTOLIB v5)
+ Iterations      : 50 per operation
+ RNG             : SHAKE128 DRBG seeded from UID (NOT SECURE, bench only)
+
+ Sizes [B]       :      pk     sk     ct/peer-pub  ss
+   ML-KEM-512    :     800   1632      768       32
+   ML-KEM-768    :    1184   2400     1088       32
+   ECDH P-256    :      64     32       64       32
+   X25519        :      32     32       32       32
+
+lib      algorithm   op         cyc_min    cyc_avg    cyc_max     avg_us    stack   heap   wbuf
+CSV,lib,alg,op,iters,cyc_min,cyc_avg,cyc_max,mhz,stack_B,heap_B,wbuf_B,err

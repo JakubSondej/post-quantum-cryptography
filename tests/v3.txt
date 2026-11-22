@@ -1,0 +1,63 @@
+
+==================================================================
+ PQC benchmark  STM32F446RE  (ML-KEM vs ECDH)
+==================================================================
+ SYSCLK          : 168 MHz
+ Flash latency   : 5 WS, prefetch on, I-cache on, D-cache on
+ Compiler        : GCC 14.3.1 20250623
+ PQClean opt     : -O3   (bench harness: build type)
+ CMOX            : libSTM32Cryptographic_CM4.a (X-CUBE-CRYPTOLIB v5)
+ Iterations      : 50 per operation
+ RNG             : SHAKE128 DRBG seeded from UID (NOT SECURE, bench only)
+
+ Sizes [B]       :      pk     sk     ct/peer-pub  ss
+   ML-KEM-512    :     800   1632      768       32
+   ML-KEM-768    :    1184   2400     1088       32
+   ECDH P-256    :      64     32       64       32
+   X25519        :      32     32       32       32
+
+lib      algorithm   op         cyc_min    cyc_avg    cyc_max     avg_us    stack   heap   wbuf
+CSV,lib,alg,op,iters,cyc_min,cyc_avg,cyc_max,mhz,stack_B,heap_B,wbuf_B,err
+PQClean  ML-KEM-512  keygen      998597     999916    1022789     5951.8    6200     200      0 ok
+CSV,PQClean,ML-KEM-512,keygen,50,998597,999916,1022789,168,6200,200,0,0
+PQClean  ML-KEM-512  encaps     1096566    1096566    1096566     6527.1    8832     200      0 ok
+CSV,PQClean,ML-KEM-512,encaps,50,1096566,1096566,1096566,168,8832,200,0,0
+PQClean  ML-KEM-512  decaps     1282043    1282043    1282043     7631.2    9608     208      0 ok
+CSV,PQClean,ML-KEM-512,decaps,50,1282043,1282043,1282043,168,9608,208,0,0
+  check ML-KEM-512                   : shared secrets MATCH
+PQClean  ML-KEM-768  keygen     1621534    1623466    1669350     9663.4   10304     200      0 ok
+CSV,PQClean,ML-KEM-768,keygen,50,1621534,1623466,1669350,168,10304,200,0,0
+PQClean  ML-KEM-768  encaps     1789174    1789174    1789174    10649.8   13440     200      0 ok
+CSV,PQClean,ML-KEM-768,encaps,50,1789174,1789174,1789174,168,13440,200,0,0
+PQClean  ML-KEM-768  decaps     2046625    2046629    2046630    12182.3   14536     208      0 ok
+CSV,PQClean,ML-KEM-768,decaps,50,2046625,2046629,2046630,168,14536,208,0,0
+  check ML-KEM-768                   : shared secrets MATCH
+CMOX     ML-KEM-512  keygen      782053     783108     797911     4661.3    3176     200      0 ok
+CSV,CMOX,ML-KEM-512,keygen,50,782053,783108,797911,168,3176,200,0,0
+CMOX     ML-KEM-512  encaps     2349465    2349465    2349465    13984.9    4680     200      0 ok
+CSV,CMOX,ML-KEM-512,encaps,50,2349465,2349465,2349465,168,4680,200,0,0
+CMOX     ML-KEM-512  decaps     2614955    2614955    2614955    15565.2    4736       0      0 ok
+CSV,CMOX,ML-KEM-512,decaps,50,2614955,2614955,2614955,168,4736,0,0,0
+  check ML-KEM-512                   : shared secrets MATCH
+CMOX     ML-KEM-768  keygen     1267072    1269534    1283396     7556.7    3688     200      0 ok
+CSV,CMOX,ML-KEM-768,keygen,50,1267072,1269534,1283396,168,3688,200,0,0
+CMOX     ML-KEM-768  encaps     3381065    3381065    3381065    20125.3    5192     200      0 ok
+CSV,CMOX,ML-KEM-768,encaps,50,3381065,3381065,3381065,168,5192,200,0,0
+CMOX     ML-KEM-768  decaps     3751292    3751292    3751292    22329.1    5568       0      0 ok
+CSV,CMOX,ML-KEM-768,decaps,50,3751292,3751292,3751292,168,5568,0,0,0
+  check ML-KEM-768                   : shared secrets MATCH
+CMOX     P-256       keygen     2128160    2128160    2128160    12667.6     696     200    624 ok
+CSV,CMOX,P-256,keygen,50,2128160,2128160,2128160,168,696,200,624,0
+CMOX     P-256       ecdh       4770135    4770135    4770135    28393.6     504       0   1612 ok
+CSV,CMOX,P-256,ecdh,50,4770135,4770135,4770135,168,504,0,1612,0
+  check P-256                        : shared secrets MATCH
+CMOX     X25519      keygen     4323637    4323637    4323637    25735.9     696     200    496 ok
+CSV,CMOX,X25519,keygen,50,4323637,4323637,4323637,168,696,200,496,0
+CMOX     X25519      ecdh       4294793    4294793    4294793    25564.2     424       0    496 ok
+CSV,CMOX,X25519,ecdh,50,4294793,4294793,4294793,168,424,0,496,0
+  check X25519                       : shared secrets MATCH
+
+stack = peak bytes below caller SP ('!' = reached _sstack, increase _Min_Stack_Size)
+heap  = peak malloc bytes, wbuf = CMOX ECC working buffer peak (of 4096 B)
+RESULT: ALL OK (0 error(s))
+==================================================================
