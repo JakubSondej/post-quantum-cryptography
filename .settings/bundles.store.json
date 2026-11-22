@@ -1,0 +1,56 @@
+{
+  "bundles": [
+    {
+      "name": "cmake",
+      "version": "4.4.0+st.1"
+    },
+    {
+      "name": "ninja",
+      "version": "1.13.2+st.1"
+    },
+    {
+      "name": "gnu-tools-for-stm32",
+      "version": "14.3.1+st.2"
+    },
+    {
+      "name": "st-arm-clangd",
+      "version": "21.1.0+st.2"
+    },
+    {
+      "name": "cube-agentic-ai-build",
+      "version": "1.1.0"
+    },
+    {
+      "name": "cube-agentic-ai-cube-wrapper",
+      "version": "1.0.3"
+    },
+    {
+      "name": "cube-agentic-ai-debug-dap",
+      "version": "1.1.0"
+    },
+    {
+      "name": "cube-agentic-ai-errata-hunter",
+      "version": "1.0.0"
+    },
+    {
+      "name": "cube-agentic-ai-esw",
+      "version": "1.1.0"
+    },
+    {
+      "name": "cube-agentic-ai-mx2-skill",
+      "version": "1.1.0"
+    },
+    {
+      "name": "cube-agentic-ai-programmer",
+      "version": "1.0.0"
+    },
+    {
+      "name": "cube-agentic-ai-sidekick-kb",
+      "version": "1.0.0"
+    },
+    {
+      "name": "cube-agentic-ai-st-docs",
+      "version": "1.1.0"
+    }
+  ]
+}

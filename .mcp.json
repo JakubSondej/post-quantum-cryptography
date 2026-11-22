@@ -1,0 +1,24 @@
+{
+  "mcpServers": {
+    "debugmcp": {
+      "type": "http",
+      "url": "http://localhost:3001/mcp"
+    },
+    "stm32-errata-hunter": {
+      "type": "http",
+      "url": "https://stm32-errata-hunter.mcp.st.com/mcp/"
+    },
+    "cubeprog": {
+      "type": "stdio",
+      "command": "cube",
+      "args": [
+        "cube-agentic-ai-prog",
+        "--stdio"
+      ]
+    },
+    "stm32-sidekick-kb": {
+      "type": "http",
+      "url": "https://stm32-sidekick.mcp.st.com/mcp/"
+    }
+  }
+}

@@ -1,0 +1,936 @@
+{
+  "schemaVersion": "1.1.0",
+  "generatedBy": "cube-ai-installer",
+  "bundles": {
+    "cube-agentic-ai-installer": {
+      "bundleName": "cube-agentic-ai-installer",
+      "bundleVersion": "1.1.0",
+      "deployedAt": "2026-11-18T21:09:49.209Z",
+      "deploymentTarget": {
+        "ide": "vscode",
+        "agenticSystem": "claude-code",
+        "fileFamily": "claude-code"
+      },
+      "selectedServiceProvenance": [
+        "S1@1.1.0|required",
+        "S2@1.1.0|required"
+      ],
+      "managedArtifacts": {
+        "S2": [
+          {
+            "artifactId": "cube-agentic-ai-cli-doctor",
+            "kind": "resource",
+            "bundleVersion": "1.1.0",
+            "sourcePath": ".cube-ai/skills/LICENSE.md",
+            "destinationPath": ".claude/skills/cube-agentic-ai-cli-doctor/LICENSE.md",
+            "contentHash": "sha256:9a748b99722fcc3953460bf89b7494d631b7074190bb5f407c73adef3bd18a90"
+          },
+          {
+            "artifactId": "cube-agentic-ai-cli-doctor",
+            "kind": "skill",
+            "bundleVersion": "1.1.0",
+            "sourcePath": ".cube-ai/skills/doctor.skill.md",
+            "destinationPath": ".claude/skills/cube-agentic-ai-cli-doctor/SKILL.md",
+            "contentHash": "sha256:479fc5d736bd6d630f99193e1fdc2cb6342636a9b62b3dc2ddd54843b2d09ac0"
+          }
+        ],
+        "S1": [
+          {
+            "artifactId": "cube-agentic-ai-cli-project-housekeeping",
+            "kind": "resource",
+            "bundleVersion": "1.1.0",
+            "sourcePath": ".cube-ai/skills/LICENSE.md",
+            "destinationPath": ".claude/skills/cube-agentic-ai-cli-project-housekeeping/LICENSE.md",
+            "contentHash": "sha256:9a748b99722fcc3953460bf89b7494d631b7074190bb5f407c73adef3bd18a90"
+          },
+          {
+            "artifactId": "cube-agentic-ai-cli-project-housekeeping",
+            "kind": "skill",
+            "bundleVersion": "1.1.0",
+            "sourcePath": ".cube-ai/skills/project-housekeeping.skill.md",
+            "destinationPath": ".claude/skills/cube-agentic-ai-cli-project-housekeeping/SKILL.md",
+            "contentHash": "sha256:8ecd3dc20bd8c0e582b36734c67d591ab7ccd394511cbb98741e12053ecdda18"
+          }
+        ]
+      },
+      "managedMcpServers": {
+        "S1": [],
+        "S2": []
+      }
+    },
+    "cube-agentic-ai-build": {
+      "bundleName": "cube-agentic-ai-build",
+      "bundleVersion": "1.1.0",
+      "deployedAt": "2026-11-18T21:09:50.637Z",
+      "deploymentTarget": {
+        "ide": "vscode",
+        "agenticSystem": "claude-code",
+        "fileFamily": "claude-code"
+      },
+      "selectedServiceProvenance": [
+        "S1@1.1.0|required",
+        "S2@1.1.0|required"
+      ],
+      "managedArtifacts": {
+        "S1": [
+          {
+            "artifactId": "cube-agentic-ai-cli-build-environment-setup",
+            "kind": "resource",
+            "bundleVersion": "1.1.0",
+            "sourcePath": ".cube-ai/data/build-security-policy.md",
+            "destinationPath": ".claude/skills/cube-agentic-ai-cli-build-environment-setup/data/build-security-policy.md",
+            "contentHash": "sha256:05613518eef224e868a5170395d22545f11c449206efe8b6eac3ade04d6b6aa7"
+          },
+          {
+            "artifactId": "cube-agentic-ai-cli-build-environment-setup",
+            "kind": "resource",
+            "bundleVersion": "1.1.0",
+            "sourcePath": ".cube-ai/skills/LICENSE.md",
+            "destinationPath": ".claude/skills/cube-agentic-ai-cli-build-environment-setup/LICENSE.md",
+            "contentHash": "sha256:6701adcab4055e3056dd8ad3305ebfcc8ffd4093c89f3a6fd70367d098c61243"
+          },
+          {
+            "artifactId": "cube-agentic-ai-cli-build-environment-setup",
+            "kind": "skill",
+            "bundleVersion": "1.1.0",
+            "sourcePath": ".cube-ai/skills/S1-build-environment-setup.md",
+            "destinationPath": ".claude/skills/cube-agentic-ai-cli-build-environment-setup/SKILL.md",
+            "contentHash": "sha256:c963a8055c6173b63a707e3f23b185d9165e8d46426453b7a3d54b8e7e7ac22a"
+          }
+        ],
+        "S2": [
+          {
+            "artifactId": "cube-agentic-ai-cli-build-launch",
+            "kind": "resource",
+            "bundleVersion": "1.1.0",
+            "sourcePath": ".cube-ai/data/build-security-policy.md",
+            "destinationPath": ".claude/skills/cube-agentic-ai-cli-build-launch/data/build-security-policy.md",
+            "contentHash": "sha256:05613518eef224e868a5170395d22545f11c449206efe8b6eac3ade04d6b6aa7"
+          },
+          {
+            "artifactId": "cube-agentic-ai-cli-build-launch",
+            "kind": "resource",
+            "bundleVersion": "1.1.0",
+            "sourcePath": ".cube-ai/skills/LICENSE.md",
+            "destinationPath": ".claude/skills/cube-agentic-ai-cli-build-launch/LICENSE.md",
+            "contentHash": "sha256:6701adcab4055e3056dd8ad3305ebfcc8ffd4093c89f3a6fd70367d098c61243"
+          },
+          {
+            "artifactId": "cube-agentic-ai-cli-build-launch",
+            "kind": "skill",
+            "bundleVersion": "1.1.0",
+            "sourcePath": ".cube-ai/skills/S2-build-launch.md",
+            "destinationPath": ".claude/skills/cube-agentic-ai-cli-build-launch/SKILL.md",
+            "contentHash": "sha256:e038ffefc76475f904348b845512f5bd09dde43e492bce15247bf2f8b005d7bc"
+          }
+        ]
+      },
+      "managedMcpServers": {
+        "S1": [],
+        "S2": []
+      }
+    },
+    "cube-agentic-ai-cube-wrapper": {
+      "bundleName": "cube-agentic-ai-cube-wrapper",
+      "bundleVersion": "1.0.3",
+      "deployedAt": "2026-11-18T21:09:52.010Z",
+      "deploymentTarget": {
+        "ide": "vscode",
+        "agenticSystem": "claude-code",
+        "fileFamily": "claude-code"
+      },
+      "selectedServiceProvenance": [
+        "SCC1@1.0.3|required"
+      ],
+      "managedArtifacts": {
+        "SCC1": [
+          {
+            "artifactId": "cube-agentic-ai-cli-cube",
+            "kind": "skill",
+            "bundleVersion": "1.0.3",
+            "sourcePath": ".stm32-ai/skills/cube-agentic-ai-cli-cube/SKILL.md",
+            "destinationPath": ".claude/skills/cube-agentic-ai-cli-cube/SKILL.md",
+            "contentHash": "sha256:9d154e2f06a381009541b24b4cef4f7f904b415d9f71391392f64e49706d8989"
+          }
+        ]
+      },
+      "managedMcpServers": {
+        "SCC1": []
+      }
+    },
+    "cube-agentic-ai-debug-dap": {
+      "bundleName": "cube-agentic-ai-debug-dap",
+      "bundleVersion": "1.1.0",
+      "deployedAt": "2026-11-18T21:09:54.112Z",
+      "deploymentTarget": {
+        "ide": "vscode",
+        "agenticSystem": "claude-code",
+        "fileFamily": "claude-code"
+      },
+      "selectedServiceProvenance": [
+        "S1@1.1.0|required",
+        "S2@1.1.0|required",
+        "S3@1.1.0|required",
+        "S4@1.1.0|required"
+      ],
+      "managedArtifacts": {
+        "S3": [
+          {
+            "artifactId": "cube-agentic-ai-cli-debug-dap-configuration-check",
+            "kind": "resource",
+            "bundleVersion": "1.1.0",
+            "sourcePath": ".cube-ai/data/dap-debug-security-policy.md",
+            "destinationPath": ".claude/skills/cube-agentic-ai-cli-debug-dap-configuration-check/data/dap-debug-security-policy.md",
+            "contentHash": "sha256:4bbdd450d0b2911acf020394096043ffd135cf1bd4e5cf615fcc87b65adf70f4"
+          },
+          {
+            "artifactId": "cube-agentic-ai-cli-debug-dap-configuration-check",
+            "kind": "resource",
+            "bundleVersion": "1.1.0",
+            "sourcePath": ".cube-ai/skills/LICENSE.md",
+            "destinationPath": ".claude/skills/cube-agentic-ai-cli-debug-dap-configuration-check/LICENSE.md",
+            "contentHash": "sha256:79e04f5955239af1efe4717f96c0bcb10391fbc682309d36ed483adcdd737fd2"
+          },
+          {
+            "artifactId": "cube-agentic-ai-cli-debug-dap-configuration-check",
+            "kind": "skill",
+            "bundleVersion": "1.1.0",
+            "sourcePath": ".cube-ai/skills/S3-debug-configuration-check.md",
+            "destinationPath": ".claude/skills/cube-agentic-ai-cli-debug-dap-configuration-check/SKILL.md",
+            "contentHash": "sha256:bf2cf24aa84006b455f715bc2c00ce3c1bd334f00dc15b7a6b4e3f0bd427610b"
+          }
+        ],
+        "S2": [
+          {
+            "artifactId": "cube-agentic-ai-cli-debug-dap-configuration",
+            "kind": "resource",
+            "bundleVersion": "1.1.0",
+            "sourcePath": ".cube-ai/data/dap-debug-security-policy.md",
+            "destinationPath": ".claude/skills/cube-agentic-ai-cli-debug-dap-configuration/data/dap-debug-security-policy.md",
+            "contentHash": "sha256:4bbdd450d0b2911acf020394096043ffd135cf1bd4e5cf615fcc87b65adf70f4"
+          },
+          {
+            "artifactId": "cube-agentic-ai-cli-debug-dap-configuration",
+            "kind": "resource",
+            "bundleVersion": "1.1.0",
+            "sourcePath": ".cube-ai/data/stlinkgdbtarget-debug-configuration.md",
+            "destinationPath": ".claude/skills/cube-agentic-ai-cli-debug-dap-configuration/data/stlinkgdbtarget-debug-configuration.md",
+            "contentHash": "sha256:36a2aff3c5a68a6282c6abd6f82e7611110bba4f11c082e73a5e7193a45d3890"
+          },
+          {
+            "artifactId": "cube-agentic-ai-cli-debug-dap-configuration",
+            "kind": "resource",
+            "bundleVersion": "1.1.0",
+            "sourcePath": ".cube-ai/skills/LICENSE.md",
+            "destinationPath": ".claude/skills/cube-agentic-ai-cli-debug-dap-configuration/LICENSE.md",
+            "contentHash": "sha256:79e04f5955239af1efe4717f96c0bcb10391fbc682309d36ed483adcdd737fd2"
+          },
+          {
+            "artifactId": "cube-agentic-ai-cli-debug-dap-configuration",
+            "kind": "skill",
+            "bundleVersion": "1.1.0",
+            "sourcePath": ".cube-ai/skills/S2-debug-configuration.md",
+            "destinationPath": ".claude/skills/cube-agentic-ai-cli-debug-dap-configuration/SKILL.md",
+            "contentHash": "sha256:2146a7af8b93b6a5ac5d018d57620367a8d7d05047a496f05198923ec2f64997"
+          }
+        ],
+        "S1": [
+          {
+            "artifactId": "cube-agentic-ai-cli-debug-dap-environment-setup",
+            "kind": "resource",
+            "bundleVersion": "1.1.0",
+            "sourcePath": ".cube-ai/data/dap-debug-security-policy.md",
+            "destinationPath": ".claude/skills/cube-agentic-ai-cli-debug-dap-environment-setup/data/dap-debug-security-policy.md",
+            "contentHash": "sha256:4bbdd450d0b2911acf020394096043ffd135cf1bd4e5cf615fcc87b65adf70f4"
+          },
+          {
+            "artifactId": "cube-agentic-ai-cli-debug-dap-environment-setup",
+            "kind": "resource",
+            "bundleVersion": "1.1.0",
+            "sourcePath": ".cube-ai/skills/LICENSE.md",
+            "destinationPath": ".claude/skills/cube-agentic-ai-cli-debug-dap-environment-setup/LICENSE.md",
+            "contentHash": "sha256:79e04f5955239af1efe4717f96c0bcb10391fbc682309d36ed483adcdd737fd2"
+          },
+          {
+            "artifactId": "cube-agentic-ai-cli-debug-dap-environment-setup",
+            "kind": "skill",
+            "bundleVersion": "1.1.0",
+            "sourcePath": ".cube-ai/skills/S1-debug-dap-environment-setup.md",
+            "destinationPath": ".claude/skills/cube-agentic-ai-cli-debug-dap-environment-setup/SKILL.md",
+            "contentHash": "sha256:d7b0f589b72c2906c7296cd7500bc40f1ce631423fbc16506687ab6dfbc9b69f"
+          }
+        ],
+        "S4": [
+          {
+            "artifactId": "cube-agentic-ai-cli-debug-dap-launch",
+            "kind": "resource",
+            "bundleVersion": "1.1.0",
+            "sourcePath": ".cube-ai/data/dap-debug-security-policy.md",
+            "destinationPath": ".claude/skills/cube-agentic-ai-cli-debug-dap-launch/data/dap-debug-security-policy.md",
+            "contentHash": "sha256:4bbdd450d0b2911acf020394096043ffd135cf1bd4e5cf615fcc87b65adf70f4"
+          },
+          {
+            "artifactId": "cube-agentic-ai-cli-debug-dap-launch",
+            "kind": "resource",
+            "bundleVersion": "1.1.0",
+            "sourcePath": ".cube-ai/skills/LICENSE.md",
+            "destinationPath": ".claude/skills/cube-agentic-ai-cli-debug-dap-launch/LICENSE.md",
+            "contentHash": "sha256:79e04f5955239af1efe4717f96c0bcb10391fbc682309d36ed483adcdd737fd2"
+          },
+          {
+            "artifactId": "cube-agentic-ai-cli-debug-dap-launch",
+            "kind": "skill",
+            "bundleVersion": "1.1.0",
+            "sourcePath": ".cube-ai/skills/S4-debug-launch.md",
+            "destinationPath": ".claude/skills/cube-agentic-ai-cli-debug-dap-launch/SKILL.md",
+            "contentHash": "sha256:f11555f02f133d4876e01b4c37cd63c133b84f72fdabacefce403756c8d04dd2"
+          }
+        ]
+      },
+      "managedMcpServers": {
+        "S1": [
+          {
+            "manifestPath": ".mcp.json",
+            "serverMapPath": [
+              "mcpServers"
+            ],
+            "serverName": "debugmcp",
+            "installerOwned": true
+          }
+        ],
+        "S2": [],
+        "S3": [],
+        "S4": [
+          {
+            "manifestPath": ".mcp.json",
+            "serverMapPath": [
+              "mcpServers"
+            ],
+            "serverName": "debugmcp",
+            "installerOwned": true
+          }
+        ]
+      }
+    },
+    "cube-agentic-ai-errata-hunter": {
+      "bundleName": "cube-agentic-ai-errata-hunter",
+      "bundleVersion": "1.0.0",
+      "deployedAt": "2026-11-18T21:09:55.691Z",
+      "deploymentTarget": {
+        "ide": "vscode",
+        "agenticSystem": "claude-code",
+        "fileFamily": "claude-code"
+      },
+      "selectedServiceProvenance": [
+        "EH1@1.0.0|required"
+      ],
+      "managedArtifacts": {
+        "EH1": [
+          {
+            "artifactId": "cube-agentic-ai-erh-errata-lookup",
+            "kind": "resource",
+            "bundleVersion": "1.0.0",
+            "sourcePath": ".cube-ai/skills/LICENSE.md",
+            "destinationPath": ".claude/skills/cube-agentic-ai-erh-errata-lookup/LICENSE.md",
+            "contentHash": "sha256:cb67380d789376b33d38084d297d019a3c8532c8b1c75e01d11b7bcb6d538999"
+          },
+          {
+            "artifactId": "cube-agentic-ai-erh-errata-lookup",
+            "kind": "resource",
+            "bundleVersion": "1.0.0",
+            "sourcePath": ".cube-ai/references/EH1-errata-context.md",
+            "destinationPath": ".claude/skills/cube-agentic-ai-erh-errata-lookup/references/EH1-errata-context.md",
+            "contentHash": "sha256:2f6ec42be8473788b70e2633d775dc9e820430d06fbe39fc6ddec33c9da86dde"
+          },
+          {
+            "artifactId": "cube-agentic-ai-erh-errata-lookup",
+            "kind": "skill",
+            "bundleVersion": "1.0.0",
+            "sourcePath": ".cube-ai/skills/EH1-errata-lookup.md",
+            "destinationPath": ".claude/skills/cube-agentic-ai-erh-errata-lookup/SKILL.md",
+            "contentHash": "sha256:03129f3d1251f38c279993e0d7f5fff0b957eea6d4c75448c7ed4bae9bc11744"
+          }
+        ]
+      },
+      "managedMcpServers": {
+        "EH1": [
+          {
+            "manifestPath": ".mcp.json",
+            "serverMapPath": [
+              "mcpServers"
+            ],
+            "serverName": "stm32-errata-hunter",
+            "installerOwned": true
+          }
+        ]
+      }
+    },
+    "cube-agentic-ai-esw": {
+      "bundleName": "cube-agentic-ai-esw",
+      "bundleVersion": "1.1.0",
+      "deployedAt": "2026-11-18T21:09:57.674Z",
+      "deploymentTarget": {
+        "ide": "vscode",
+        "agenticSystem": "claude-code",
+        "fileFamily": "claude-code"
+      },
+      "selectedServiceProvenance": [
+        "S0@1.1.0|required",
+        "S1@1.1.0|optional",
+        "S2@1.1.0|optional",
+        "S5@1.1.0|optional"
+      ],
+      "managedArtifacts": {
+        "S5": [
+          {
+            "artifactId": "cube-agentic-ai-esw-application-code",
+            "kind": "resource",
+            "bundleVersion": "1.1.0",
+            "sourcePath": ".cube-ai/skills/LICENSE.md",
+            "destinationPath": ".claude/skills/cube-agentic-ai-esw-application-code/LICENSE.md",
+            "contentHash": "sha256:0afa6cc6f80083d95a3ee31e2525cf86d75c5d45f2191729237240380354c5e9"
+          },
+          {
+            "artifactId": "cube-agentic-ai-esw-application-code",
+            "kind": "skill",
+            "bundleVersion": "1.1.0",
+            "sourcePath": ".cube-ai/skills/application-code.skill.md",
+            "destinationPath": ".claude/skills/cube-agentic-ai-esw-application-code/SKILL.md",
+            "contentHash": "sha256:c28be13784e659783345c729e801b6a9033470009ec149a3c9bd30dbf110de96"
+          }
+        ],
+        "S0": [
+          {
+            "artifactId": "cube-agentic-ai-esw-environment-setup",
+            "kind": "resource",
+            "bundleVersion": "1.1.0",
+            "sourcePath": ".cube-ai/skills/LICENSE.md",
+            "destinationPath": ".claude/skills/cube-agentic-ai-esw-environment-setup/LICENSE.md",
+            "contentHash": "sha256:0afa6cc6f80083d95a3ee31e2525cf86d75c5d45f2191729237240380354c5e9"
+          },
+          {
+            "artifactId": "cube-agentic-ai-esw-environment-setup",
+            "kind": "skill",
+            "bundleVersion": "1.1.0",
+            "sourcePath": ".cube-ai/skills/esw-environment-setup.skill.md",
+            "destinationPath": ".claude/skills/cube-agentic-ai-esw-environment-setup/SKILL.md",
+            "contentHash": "sha256:40564e7d729176814c05cf7a50908a55476d725f0ae0e2815c4dbd70f78e622e"
+          }
+        ],
+        "S1": [
+          {
+            "artifactId": "cube-agentic-ai-esw-example-source-analyst",
+            "kind": "resource",
+            "bundleVersion": "1.1.0",
+            "sourcePath": ".cube-ai/skills/LICENSE.md",
+            "destinationPath": ".claude/skills/cube-agentic-ai-esw-example-source-analyst/LICENSE.md",
+            "contentHash": "sha256:0afa6cc6f80083d95a3ee31e2525cf86d75c5d45f2191729237240380354c5e9"
+          },
+          {
+            "artifactId": "cube-agentic-ai-esw-example-source-analyst",
+            "kind": "skill",
+            "bundleVersion": "1.1.0",
+            "sourcePath": ".cube-ai/skills/example-source-analyst.skill.md",
+            "destinationPath": ".claude/skills/cube-agentic-ai-esw-example-source-analyst/SKILL.md",
+            "contentHash": "sha256:b436355344a03b8ad3574aa270c524fa03436f53cebf71a7c06e1e6a65df0fdb"
+          },
+          {
+            "artifactId": "cube-agentic-ai-esw-examples-explorer",
+            "kind": "resource",
+            "bundleVersion": "1.1.0",
+            "sourcePath": ".cube-ai/skills/LICENSE.md",
+            "destinationPath": ".claude/skills/cube-agentic-ai-esw-examples-explorer/LICENSE.md",
+            "contentHash": "sha256:0afa6cc6f80083d95a3ee31e2525cf86d75c5d45f2191729237240380354c5e9"
+          },
+          {
+            "artifactId": "cube-agentic-ai-esw-examples-explorer",
+            "kind": "skill",
+            "bundleVersion": "1.1.0",
+            "sourcePath": ".cube-ai/skills/examples-explorer.skill.md",
+            "destinationPath": ".claude/skills/cube-agentic-ai-esw-examples-explorer/SKILL.md",
+            "contentHash": "sha256:df585de8dc953f11ac82397cc16689d0ece7ab298a9e7ee2fda6fa44bf4b3f9a"
+          }
+        ],
+        "S2": [
+          {
+            "artifactId": "cube-agentic-ai-esw-hal-ll-guidance-documented-usage",
+            "kind": "resource",
+            "bundleVersion": "1.1.0",
+            "sourcePath": ".cube-ai/skills/LICENSE.md",
+            "destinationPath": ".claude/skills/cube-agentic-ai-esw-hal-ll-guidance-documented-usage/LICENSE.md",
+            "contentHash": "sha256:0afa6cc6f80083d95a3ee31e2525cf86d75c5d45f2191729237240380354c5e9"
+          },
+          {
+            "artifactId": "cube-agentic-ai-esw-hal-ll-guidance-documented-usage",
+            "kind": "skill",
+            "bundleVersion": "1.1.0",
+            "sourcePath": ".cube-ai/skills/hal-ll-guidance-documented-usage.skill.md",
+            "destinationPath": ".claude/skills/cube-agentic-ai-esw-hal-ll-guidance-documented-usage/SKILL.md",
+            "contentHash": "sha256:17fa5397e8b9a74529594bc806e83d35ff58ee94577b5edbd2b68299ff48a9b1"
+          },
+          {
+            "artifactId": "cube-agentic-ai-esw-hal-ll-guidance-reference",
+            "kind": "resource",
+            "bundleVersion": "1.1.0",
+            "sourcePath": ".cube-ai/skills/LICENSE.md",
+            "destinationPath": ".claude/skills/cube-agentic-ai-esw-hal-ll-guidance-reference/LICENSE.md",
+            "contentHash": "sha256:0afa6cc6f80083d95a3ee31e2525cf86d75c5d45f2191729237240380354c5e9"
+          },
+          {
+            "artifactId": "cube-agentic-ai-esw-hal-ll-guidance-reference",
+            "kind": "skill",
+            "bundleVersion": "1.1.0",
+            "sourcePath": ".cube-ai/skills/hal-ll-guidance-reference.skill.md",
+            "destinationPath": ".claude/skills/cube-agentic-ai-esw-hal-ll-guidance-reference/SKILL.md",
+            "contentHash": "sha256:ce950539e5121a37030b1f47333216827cfd8846c5adfcb675fc8d20a55bbfa1"
+          },
+          {
+            "artifactId": "cube-agentic-ai-esw-hal-ll-guidance-runtime-model",
+            "kind": "resource",
+            "bundleVersion": "1.1.0",
+            "sourcePath": ".cube-ai/skills/LICENSE.md",
+            "destinationPath": ".claude/skills/cube-agentic-ai-esw-hal-ll-guidance-runtime-model/LICENSE.md",
+            "contentHash": "sha256:0afa6cc6f80083d95a3ee31e2525cf86d75c5d45f2191729237240380354c5e9"
+          },
+          {
+            "artifactId": "cube-agentic-ai-esw-hal-ll-guidance-runtime-model",
+            "kind": "skill",
+            "bundleVersion": "1.1.0",
+            "sourcePath": ".cube-ai/skills/hal-ll-guidance-runtime-model.skill.md",
+            "destinationPath": ".claude/skills/cube-agentic-ai-esw-hal-ll-guidance-runtime-model/SKILL.md",
+            "contentHash": "sha256:b3e9254c2cf441ca6acd6165fd7324c959cb43712f1c59cd92578152ffa33311"
+          }
+        ]
+      },
+      "managedMcpServers": {
+        "S0": [],
+        "S1": [],
+        "S2": [],
+        "S5": []
+      }
+    },
+    "cube-agentic-ai-mx2-skill": {
+      "bundleName": "cube-agentic-ai-mx2-skill",
+      "bundleVersion": "1.1.0",
+      "deployedAt": "2026-11-18T21:09:59.054Z",
+      "deploymentTarget": {
+        "ide": "vscode",
+        "agenticSystem": "claude-code",
+        "fileFamily": "claude-code"
+      },
+      "selectedServiceProvenance": [
+        "S11@1.1.0|required",
+        "S9@1.1.0|optional"
+      ],
+      "managedArtifacts": {
+        "S11": [
+          {
+            "artifactId": "cube-agentic-ai-mx2-ioc2-guard",
+            "kind": "instruction",
+            "bundleVersion": "1.1.0",
+            "sourcePath": ".cube-ai/instructions/cube-agentic-ai-mx2-ioc2-guard.instructions.md",
+            "destinationPath": ".claude/rules/cube-agentic-ai-mx2-ioc2-guard.md",
+            "contentHash": "sha256:b473fa094af72c17fd5a5fa6a1f2907404ee8d1b09108690adbe71d8c02146ee"
+          },
+          {
+            "artifactId": "cube-agentic-ai-mx2-create-or-configure-project",
+            "kind": "resource",
+            "bundleVersion": "1.1.0",
+            "sourcePath": ".cube-ai/skills/cube-agentic-ai-mx2-create-or-configure-project/LICENSE.md",
+            "destinationPath": ".claude/skills/cube-agentic-ai-mx2-create-or-configure-project/LICENSE.md",
+            "contentHash": "sha256:09df9ae1c9b8fec5ee05bfde39db265c69c2687af13b939c0cd4281fc87cad91"
+          },
+          {
+            "artifactId": "cube-agentic-ai-mx2-create-or-configure-project",
+            "kind": "resource",
+            "bundleVersion": "1.1.0",
+            "sourcePath": ".cube-ai/skills/cube-agentic-ai-mx2-create-or-configure-project/resources/reference/cli-syntax.md",
+            "destinationPath": ".claude/skills/cube-agentic-ai-mx2-create-or-configure-project/resources/reference/cli-syntax.md",
+            "contentHash": "sha256:6f8f887d2d2d1fdfaa60d51bd44f51fbb540527f98202c9a8689020229828fb6"
+          },
+          {
+            "artifactId": "cube-agentic-ai-mx2-create-or-configure-project",
+            "kind": "resource",
+            "bundleVersion": "1.1.0",
+            "sourcePath": ".cube-ai/skills/cube-agentic-ai-mx2-create-or-configure-project/resources/reference/identifiers.md",
+            "destinationPath": ".claude/skills/cube-agentic-ai-mx2-create-or-configure-project/resources/reference/identifiers.md",
+            "contentHash": "sha256:645e7c3f06cb655e76196a0245e2d9b3c506aa6ffc57f7e7b840398d3482a1ff"
+          },
+          {
+            "artifactId": "cube-agentic-ai-mx2-create-or-configure-project",
+            "kind": "resource",
+            "bundleVersion": "1.1.0",
+            "sourcePath": ".cube-ai/skills/cube-agentic-ai-mx2-create-or-configure-project/resources/reference/middleware-utilities-parts.md",
+            "destinationPath": ".claude/skills/cube-agentic-ai-mx2-create-or-configure-project/resources/reference/middleware-utilities-parts.md",
+            "contentHash": "sha256:704a8558f58ebcff14a19010948cb220b2e9dc653556eb32b7977300d694f498"
+          },
+          {
+            "artifactId": "cube-agentic-ai-mx2-create-or-configure-project",
+            "kind": "skill",
+            "bundleVersion": "1.1.0",
+            "sourcePath": ".cube-ai/skills/cube-agentic-ai-mx2-create-or-configure-project/SKILL.md",
+            "destinationPath": ".claude/skills/cube-agentic-ai-mx2-create-or-configure-project/SKILL.md",
+            "contentHash": "sha256:77d0d418617dd35e963cd7778c43a5ccbb506aa5827835a384e4287335a71992"
+          }
+        ],
+        "S9": [
+          {
+            "artifactId": "cube-agentic-ai-mx2-generate-export",
+            "kind": "resource",
+            "bundleVersion": "1.1.0",
+            "sourcePath": ".cube-ai/skills/cube-agentic-ai-mx2-generate-export/LICENSE.md",
+            "destinationPath": ".claude/skills/cube-agentic-ai-mx2-generate-export/LICENSE.md",
+            "contentHash": "sha256:09df9ae1c9b8fec5ee05bfde39db265c69c2687af13b939c0cd4281fc87cad91"
+          },
+          {
+            "artifactId": "cube-agentic-ai-mx2-generate-export",
+            "kind": "skill",
+            "bundleVersion": "1.1.0",
+            "sourcePath": ".cube-ai/skills/cube-agentic-ai-mx2-generate-export/SKILL.md",
+            "destinationPath": ".claude/skills/cube-agentic-ai-mx2-generate-export/SKILL.md",
+            "contentHash": "sha256:7788f516ac585d2b155c5261bd636edf4e44cff82fdc51ccc8ad0d7bf5e470ed"
+          }
+        ]
+      },
+      "managedMcpServers": {
+        "S11": [],
+        "S9": []
+      }
+    },
+    "cube-agentic-ai-programmer": {
+      "bundleName": "cube-agentic-ai-programmer",
+      "bundleVersion": "1.0.0",
+      "deployedAt": "2026-11-18T21:10:00.643Z",
+      "deploymentTarget": {
+        "ide": "vscode",
+        "agenticSystem": "claude-code",
+        "fileFamily": "claude-code"
+      },
+      "selectedServiceProvenance": [
+        "S1@1.0.0|required",
+        "S2@1.0.0|required",
+        "S3@1.0.0|required",
+        "S4@1.0.0|required",
+        "S5@1.0.0|required",
+        "S6@1.0.0|required"
+      ],
+      "managedArtifacts": {
+        "S2": [
+          {
+            "artifactId": "cube-agentic-ai-prg-device-inspect",
+            "kind": "resource",
+            "bundleVersion": "1.0.0",
+            "sourcePath": ".cube-ai/skills/LICENSE.md",
+            "destinationPath": ".claude/skills/cube-agentic-ai-prg-device-inspect/LICENSE.md",
+            "contentHash": "sha256:fc13c0be1351ef244722c0927ad2cf710c695bd00d061bb0fc8ffd20b18098ea"
+          },
+          {
+            "artifactId": "cube-agentic-ai-prg-device-inspect",
+            "kind": "skill",
+            "bundleVersion": "1.0.0",
+            "sourcePath": ".cube-ai/skills/S2-device-inspect.md",
+            "destinationPath": ".claude/skills/cube-agentic-ai-prg-device-inspect/SKILL.md",
+            "contentHash": "sha256:7b2fff6e16f351650b57f3da68568732ff012a664a606b12c501380ccd1c6283"
+          }
+        ],
+        "S6": [
+          {
+            "artifactId": "cube-agentic-ai-prg-docs-knowledge",
+            "kind": "resource",
+            "bundleVersion": "1.0.0",
+            "sourcePath": ".cube-ai/skills/LICENSE.md",
+            "destinationPath": ".claude/skills/cube-agentic-ai-prg-docs-knowledge/LICENSE.md",
+            "contentHash": "sha256:fc13c0be1351ef244722c0927ad2cf710c695bd00d061bb0fc8ffd20b18098ea"
+          },
+          {
+            "artifactId": "cube-agentic-ai-prg-docs-knowledge",
+            "kind": "skill",
+            "bundleVersion": "1.0.0",
+            "sourcePath": ".cube-ai/skills/S6-docs-knowledge.md",
+            "destinationPath": ".claude/skills/cube-agentic-ai-prg-docs-knowledge/SKILL.md",
+            "contentHash": "sha256:93e932112c1e1516e9c689d746019496a0c7a97eb1bc7e7e626d9dac56596df6"
+          }
+        ],
+        "S3": [
+          {
+            "artifactId": "cube-agentic-ai-prg-erase",
+            "kind": "resource",
+            "bundleVersion": "1.0.0",
+            "sourcePath": ".cube-ai/skills/LICENSE.md",
+            "destinationPath": ".claude/skills/cube-agentic-ai-prg-erase/LICENSE.md",
+            "contentHash": "sha256:fc13c0be1351ef244722c0927ad2cf710c695bd00d061bb0fc8ffd20b18098ea"
+          },
+          {
+            "artifactId": "cube-agentic-ai-prg-erase",
+            "kind": "skill",
+            "bundleVersion": "1.0.0",
+            "sourcePath": ".cube-ai/skills/S3-erase.md",
+            "destinationPath": ".claude/skills/cube-agentic-ai-prg-erase/SKILL.md",
+            "contentHash": "sha256:28dea735b95c33981f5837a5aabcd1781abcbdb9a3eef7fcd0a5236aaa0e5b89"
+          }
+        ],
+        "S1": [
+          {
+            "artifactId": "cube-agentic-ai-prg-flash-program",
+            "kind": "resource",
+            "bundleVersion": "1.0.0",
+            "sourcePath": ".cube-ai/skills/LICENSE.md",
+            "destinationPath": ".claude/skills/cube-agentic-ai-prg-flash-program/LICENSE.md",
+            "contentHash": "sha256:fc13c0be1351ef244722c0927ad2cf710c695bd00d061bb0fc8ffd20b18098ea"
+          },
+          {
+            "artifactId": "cube-agentic-ai-prg-flash-program",
+            "kind": "skill",
+            "bundleVersion": "1.0.0",
+            "sourcePath": ".cube-ai/skills/S1-flash-program.md",
+            "destinationPath": ".claude/skills/cube-agentic-ai-prg-flash-program/SKILL.md",
+            "contentHash": "sha256:2c47c7ed27f1b3a517f63bf826b701fedad679c761d862443b50df1f1a5b77a6"
+          }
+        ],
+        "S4": [
+          {
+            "artifactId": "cube-agentic-ai-prg-option-bytes",
+            "kind": "resource",
+            "bundleVersion": "1.0.0",
+            "sourcePath": ".cube-ai/skills/LICENSE.md",
+            "destinationPath": ".claude/skills/cube-agentic-ai-prg-option-bytes/LICENSE.md",
+            "contentHash": "sha256:fc13c0be1351ef244722c0927ad2cf710c695bd00d061bb0fc8ffd20b18098ea"
+          },
+          {
+            "artifactId": "cube-agentic-ai-prg-option-bytes",
+            "kind": "skill",
+            "bundleVersion": "1.0.0",
+            "sourcePath": ".cube-ai/skills/S4-option-bytes.md",
+            "destinationPath": ".claude/skills/cube-agentic-ai-prg-option-bytes/SKILL.md",
+            "contentHash": "sha256:12fdedf88fe8086156e94ab9e74aa90666fe9bd5ecd6cd49e3559fa34731d094"
+          }
+        ],
+        "S5": [
+          {
+            "artifactId": "cube-agentic-ai-prg-security-lock",
+            "kind": "resource",
+            "bundleVersion": "1.0.0",
+            "sourcePath": ".cube-ai/skills/LICENSE.md",
+            "destinationPath": ".claude/skills/cube-agentic-ai-prg-security-lock/LICENSE.md",
+            "contentHash": "sha256:fc13c0be1351ef244722c0927ad2cf710c695bd00d061bb0fc8ffd20b18098ea"
+          },
+          {
+            "artifactId": "cube-agentic-ai-prg-security-lock",
+            "kind": "skill",
+            "bundleVersion": "1.0.0",
+            "sourcePath": ".cube-ai/skills/S5-security-lock.md",
+            "destinationPath": ".claude/skills/cube-agentic-ai-prg-security-lock/SKILL.md",
+            "contentHash": "sha256:88f421fb3da4a154571e35a4b92490c042a5b734ab4ac8b88b81cc48377348b9"
+          }
+        ]
+      },
+      "managedMcpServers": {
+        "S1": [
+          {
+            "manifestPath": ".mcp.json",
+            "serverMapPath": [
+              "mcpServers"
+            ],
+            "serverName": "cubeprog",
+            "installerOwned": true
+          }
+        ],
+        "S2": [
+          {
+            "manifestPath": ".mcp.json",
+            "serverMapPath": [
+              "mcpServers"
+            ],
+            "serverName": "cubeprog",
+            "installerOwned": true
+          }
+        ],
+        "S3": [
+          {
+            "manifestPath": ".mcp.json",
+            "serverMapPath": [
+              "mcpServers"
+            ],
+            "serverName": "cubeprog",
+            "installerOwned": true
+          }
+        ],
+        "S4": [
+          {
+            "manifestPath": ".mcp.json",
+            "serverMapPath": [
+              "mcpServers"
+            ],
+            "serverName": "cubeprog",
+            "installerOwned": true
+          }
+        ],
+        "S5": [
+          {
+            "manifestPath": ".mcp.json",
+            "serverMapPath": [
+              "mcpServers"
+            ],
+            "serverName": "cubeprog",
+            "installerOwned": true
+          }
+        ],
+        "S6": [
+          {
+            "manifestPath": ".mcp.json",
+            "serverMapPath": [
+              "mcpServers"
+            ],
+            "serverName": "cubeprog",
+            "installerOwned": true
+          }
+        ]
+      }
+    },
+    "cube-agentic-ai-sidekick-kb": {
+      "bundleName": "cube-agentic-ai-sidekick-kb",
+      "bundleVersion": "1.0.0",
+      "deployedAt": "2026-11-18T21:10:01.809Z",
+      "deploymentTarget": {
+        "ide": "vscode",
+        "agenticSystem": "claude-code",
+        "fileFamily": "claude-code"
+      },
+      "selectedServiceProvenance": [
+        "S1@1.0.0|required"
+      ],
+      "managedArtifacts": {
+        "S1": [
+          {
+            "artifactId": "cube-agentic-ai-skb-knowledge-search",
+            "kind": "resource",
+            "bundleVersion": "1.0.0",
+            "sourcePath": ".cube-ai/skills/LICENSE.md",
+            "destinationPath": ".claude/skills/cube-agentic-ai-skb-knowledge-search/LICENSE.md",
+            "contentHash": "sha256:7a7fc4d1cdcd6508b9c3f7692c7caad3e22424f0af29ce4583a2251a89c6dfd9"
+          },
+          {
+            "artifactId": "cube-agentic-ai-skb-knowledge-search",
+            "kind": "skill",
+            "bundleVersion": "1.0.0",
+            "sourcePath": ".cube-ai/skills/knowledge-search.skill.md",
+            "destinationPath": ".claude/skills/cube-agentic-ai-skb-knowledge-search/SKILL.md",
+            "contentHash": "sha256:3e0c31a6a7f56e45411f18070e9b315289186466d1892206ca2f280c4ab4ad9f"
+          }
+        ]
+      },
+      "managedMcpServers": {
+        "S1": [
+          {
+            "manifestPath": ".mcp.json",
+            "serverMapPath": [
+              "mcpServers"
+            ],
+            "serverName": "stm32-sidekick-kb",
+            "installerOwned": true
+          }
+        ]
+      }
+    },
+    "cube-agentic-ai-st-docs": {
+      "bundleName": "cube-agentic-ai-st-docs",
+      "bundleVersion": "1.1.0",
+      "deployedAt": "2026-11-18T21:10:03.135Z",
+      "deploymentTarget": {
+        "ide": "vscode",
+        "agenticSystem": "claude-code",
+        "fileFamily": "claude-code"
+      },
+      "selectedServiceProvenance": [
+        "S1@1.1.0|required",
+        "S2@1.1.0|optional",
+        "S3@1.1.0|optional"
+      ],
+      "managedArtifacts": {
+        "S2": [
+          {
+            "artifactId": "cube-agentic-ai-doc-document-topology",
+            "kind": "resource",
+            "bundleVersion": "1.1.0",
+            "sourcePath": ".cube-ai/catalog/document-topology.md",
+            "destinationPath": ".claude/skills/cube-agentic-ai-doc-document-topology/document-topology.md",
+            "contentHash": "sha256:7b2eadc968a03a4448f437e9ba29bf41e7b47ab799246369b0d3ead86fdee4f3"
+          },
+          {
+            "artifactId": "cube-agentic-ai-doc-document-topology",
+            "kind": "resource",
+            "bundleVersion": "1.1.0",
+            "sourcePath": ".cube-ai/skills/LICENSE.md",
+            "destinationPath": ".claude/skills/cube-agentic-ai-doc-document-topology/LICENSE.md",
+            "contentHash": "sha256:5de4a908095a8d51f4a3c52aae47eddde52e506a49d98f2be54b0140b0ea0b7b"
+          },
+          {
+            "artifactId": "cube-agentic-ai-doc-document-topology",
+            "kind": "skill",
+            "bundleVersion": "1.1.0",
+            "sourcePath": ".cube-ai/skills/document-topology.skill.md",
+            "destinationPath": ".claude/skills/cube-agentic-ai-doc-document-topology/SKILL.md",
+            "contentHash": "sha256:ba23fa2c125676a8479bfeb5da8a8a26808b0ffee312812e1ca5f76b0b56a06f"
+          }
+        ],
+        "S3": [
+          {
+            "artifactId": "cube-agentic-ai-doc-raw-asset-retrieval",
+            "kind": "resource",
+            "bundleVersion": "1.1.0",
+            "sourcePath": ".cube-ai/examples/example-md-navigation.md",
+            "destinationPath": ".claude/skills/cube-agentic-ai-doc-raw-asset-retrieval/examples/example-md-navigation.md",
+            "contentHash": "sha256:22ddecc91a7f98c5a9f518f5439f207c868743debf8d1ee8a500255464f91edb"
+          },
+          {
+            "artifactId": "cube-agentic-ai-doc-raw-asset-retrieval",
+            "kind": "resource",
+            "bundleVersion": "1.1.0",
+            "sourcePath": ".cube-ai/examples/example-zip-retrieval.md",
+            "destinationPath": ".claude/skills/cube-agentic-ai-doc-raw-asset-retrieval/examples/example-zip-retrieval.md",
+            "contentHash": "sha256:4375c7c285e73e5a629efd855ae6425546629e95cc4b148dfd71780713035369"
+          },
+          {
+            "artifactId": "cube-agentic-ai-doc-raw-asset-retrieval",
+            "kind": "resource",
+            "bundleVersion": "1.1.0",
+            "sourcePath": ".cube-ai/skills/LICENSE.md",
+            "destinationPath": ".claude/skills/cube-agentic-ai-doc-raw-asset-retrieval/LICENSE.md",
+            "contentHash": "sha256:5de4a908095a8d51f4a3c52aae47eddde52e506a49d98f2be54b0140b0ea0b7b"
+          },
+          {
+            "artifactId": "cube-agentic-ai-doc-raw-asset-retrieval",
+            "kind": "skill",
+            "bundleVersion": "1.1.0",
+            "sourcePath": ".cube-ai/skills/raw-asset-retrieval.skill.md",
+            "destinationPath": ".claude/skills/cube-agentic-ai-doc-raw-asset-retrieval/SKILL.md",
+            "contentHash": "sha256:781f210bc059217009b174f8339ffbb5ff7209d3c6412ada687263b943f5825f"
+          }
+        ],
+        "S1": [
+          {
+            "artifactId": "cube-agentic-ai-doc-source-discovery",
+            "kind": "resource",
+            "bundleVersion": "1.1.0",
+            "sourcePath": ".cube-ai/skills/LICENSE.md",
+            "destinationPath": ".claude/skills/cube-agentic-ai-doc-source-discovery/LICENSE.md",
+            "contentHash": "sha256:5de4a908095a8d51f4a3c52aae47eddde52e506a49d98f2be54b0140b0ea0b7b"
+          },
+          {
+            "artifactId": "cube-agentic-ai-doc-source-discovery",
+            "kind": "skill",
+            "bundleVersion": "1.1.0",
+            "sourcePath": ".cube-ai/skills/source-discovery.skill.md",
+            "destinationPath": ".claude/skills/cube-agentic-ai-doc-source-discovery/SKILL.md",
+            "contentHash": "sha256:dce64aa4d170ec943e7cafc5f06b3fd52968b2ee90d7d2df70eac378d6d60f56"
+          }
+        ]
+      },
+      "managedMcpServers": {
+        "S1": [],
+        "S2": [],
+        "S3": []
+      }
+    }
+  }
+}

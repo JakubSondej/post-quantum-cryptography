@@ -1,0 +1,7 @@
+build
+mx.scratch
+!.settings
+# STM32Cube Agentic AI (machine-installed, ST-licensed; redeploy with 'cube agentic-ai setup')
+.claude/skills/
+.claude/rules/cube-agentic-ai-*
+.claude/settings.local.json
