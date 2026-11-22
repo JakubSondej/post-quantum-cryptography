@@ -23,7 +23,23 @@
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "Release"
             }
-        }
+        },
+
+        { "name": "size-none",         "displayName": "5a size: baseline (no algorithm)", "inherits": "Release", "cacheVariables": { "BENCH_ALGO": "NONE" } },
+        { "name": "size-pqclean512",   "displayName": "5a size: PQClean ML-KEM-512 -O3",  "inherits": "Release", "cacheVariables": { "BENCH_ALGO": "PQCLEAN_512" } },
+        { "name": "size-pqclean768",   "displayName": "5a size: PQClean ML-KEM-768 -O3",  "inherits": "Release", "cacheVariables": { "BENCH_ALGO": "PQCLEAN_768" } },
+        { "name": "size-cmoxkem512",   "displayName": "5a size: CMOX ML-KEM-512",         "inherits": "Release", "cacheVariables": { "BENCH_ALGO": "CMOX_KEM_512" } },
+        { "name": "size-cmoxkem768",   "displayName": "5a size: CMOX ML-KEM-768",         "inherits": "Release", "cacheVariables": { "BENCH_ALGO": "CMOX_KEM_768" } },
+        { "name": "size-p256",         "displayName": "5a size: CMOX ECDH P-256",         "inherits": "Release", "cacheVariables": { "BENCH_ALGO": "CMOX_P256" } },
+        { "name": "size-x25519",       "displayName": "5a size: CMOX X25519",             "inherits": "Release", "cacheVariables": { "BENCH_ALGO": "CMOX_X25519" } },
+
+        { "name": "size-pqclean512-O2", "displayName": "5b size: PQClean ML-KEM-512 -O2", "inherits": "Release", "cacheVariables": { "BENCH_ALGO": "PQCLEAN_512", "PQC_OPT_LEVEL": "-O2" } },
+        { "name": "size-pqclean512-Os", "displayName": "5b size: PQClean ML-KEM-512 -Os", "inherits": "Release", "cacheVariables": { "BENCH_ALGO": "PQCLEAN_512", "PQC_OPT_LEVEL": "-Os" } },
+        { "name": "size-pqclean768-O2", "displayName": "5b size: PQClean ML-KEM-768 -O2", "inherits": "Release", "cacheVariables": { "BENCH_ALGO": "PQCLEAN_768", "PQC_OPT_LEVEL": "-O2" } },
+        { "name": "size-pqclean768-Os", "displayName": "5b size: PQClean ML-KEM-768 -Os", "inherits": "Release", "cacheVariables": { "BENCH_ALGO": "PQCLEAN_768", "PQC_OPT_LEVEL": "-Os" } },
+
+        { "name": "opt-O2", "displayName": "5b timing: all algorithms, PQClean -O2", "inherits": "Release", "cacheVariables": { "BENCH_ALGO": "ALL", "PQC_OPT_LEVEL": "-O2" } },
+        { "name": "opt-Os", "displayName": "5b timing: all algorithms, PQClean -Os", "inherits": "Release", "cacheVariables": { "BENCH_ALGO": "ALL", "PQC_OPT_LEVEL": "-Os" } }
     ],
     "buildPresets": [
         {

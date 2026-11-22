@@ -1,0 +1,31 @@
+<svg xmlns='http://www.w3.org/2000/svg' width='760' height='316' viewBox='0 0 760 316' font-family='Segoe UI, Helvetica, Arial, sans-serif'>
+<rect width='100%' height='100%' fill='#fcfcfb'/>
+<text x='16' y='26' font-size='16' font-weight='600' fill='#0b0b0b'>Dane przesyłane podczas uzgodnienia klucza</text>
+<rect x='16' y='38' width='12' height='12' rx='3' fill='#2a78d6'/><text x='34' y='48' font-size='12' fill='#52514e'>ML-KEM PQClean</text>
+<rect x='148' y='38' width='12' height='12' rx='3' fill='#eb6834'/><text x='166' y='48' font-size='12' fill='#52514e'>ML-KEM CMOX</text>
+<rect x='259' y='38' width='12' height='12' rx='3' fill='#1baf7a'/><text x='277' y='48' font-size='12' fill='#52514e'>ECDH CMOX</text>
+<line x1='230.0' y1='60' x2='230.0' y2='256' stroke='#e4e3df' stroke-width='1'/><text x='230.0' y='272' font-size='11' fill='#52514e' text-anchor='middle'>0</text>
+<line x1='376.7' y1='60' x2='376.7' y2='256' stroke='#e4e3df' stroke-width='1'/><text x='376.7' y='272' font-size='11' fill='#52514e' text-anchor='middle'>1000</text>
+<line x1='523.3' y1='60' x2='523.3' y2='256' stroke='#e4e3df' stroke-width='1'/><text x='523.3' y='272' font-size='11' fill='#52514e' text-anchor='middle'>2000</text>
+<line x1='670.0' y1='60' x2='670.0' y2='256' stroke='#e4e3df' stroke-width='1'/><text x='670.0' y='272' font-size='11' fill='#52514e' text-anchor='middle'>3000</text>
+<text x='450.0' y='290' font-size='12' fill='#52514e' text-anchor='middle'>bajty</text>
+<text x='220' y='79.4' font-size='12.5' fill='#0b0b0b' text-anchor='end'>PQClean ML-KEM-512</text>
+<g><title>PQClean ML-KEM-512: 1568 B</title><path d='M230,64 h226.0 a4,4 0 0 1 4,4 v14 a4,4 0 0 1 -4,4 h-226.0 z' fill='#2a78d6'/></g>
+<text x='466.0' y='79.4' font-size='12' fill='#0b0b0b'>1568</text>
+<text x='220' y='111.4' font-size='12.5' fill='#0b0b0b' text-anchor='end'>PQClean ML-KEM-768</text>
+<g><title>PQClean ML-KEM-768: 2272 B</title><path d='M230,96 h329.2 a4,4 0 0 1 4,4 v14 a4,4 0 0 1 -4,4 h-329.2 z' fill='#2a78d6'/></g>
+<text x='569.2' y='111.4' font-size='12' fill='#0b0b0b'>2272</text>
+<text x='220' y='143.4' font-size='12.5' fill='#0b0b0b' text-anchor='end'>CMOX ML-KEM-512</text>
+<g><title>CMOX ML-KEM-512: 1568 B</title><path d='M230,128 h226.0 a4,4 0 0 1 4,4 v14 a4,4 0 0 1 -4,4 h-226.0 z' fill='#eb6834'/></g>
+<text x='466.0' y='143.4' font-size='12' fill='#0b0b0b'>1568</text>
+<text x='220' y='175.4' font-size='12.5' fill='#0b0b0b' text-anchor='end'>CMOX ML-KEM-768</text>
+<g><title>CMOX ML-KEM-768: 2272 B</title><path d='M230,160 h329.2 a4,4 0 0 1 4,4 v14 a4,4 0 0 1 -4,4 h-329.2 z' fill='#eb6834'/></g>
+<text x='569.2' y='175.4' font-size='12' fill='#0b0b0b'>2272</text>
+<text x='220' y='207.4' font-size='12.5' fill='#0b0b0b' text-anchor='end'>ECDH P-256 (CMOX)</text>
+<g><title>ECDH P-256 (CMOX): 128 B</title><path d='M230,192 h14.8 a4,4 0 0 1 4,4 v14 a4,4 0 0 1 -4,4 h-14.8 z' fill='#1baf7a'/></g>
+<text x='254.8' y='207.4' font-size='12' fill='#0b0b0b'>128</text>
+<text x='220' y='239.4' font-size='12.5' fill='#0b0b0b' text-anchor='end'>ECDH X25519 (CMOX)</text>
+<g><title>ECDH X25519 (CMOX): 64 B</title><path d='M230,224 h5.4 a4,4 0 0 1 4,4 v14 a4,4 0 0 1 -4,4 h-5.4 z' fill='#1baf7a'/></g>
+<text x='245.4' y='239.4' font-size='12' fill='#0b0b0b'>64</text>
+<text x='16' y='306' font-size='11' fill='#52514e'>ML-KEM: pk + ct; ECDH: 2 klucze publiczne.</text>
+</svg>

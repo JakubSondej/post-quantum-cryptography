@@ -94,9 +94,29 @@ target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE
     Middlewares/ST/STM32_Cryptographic/include   # ST CMOX (X-CUBE-CRYPTOLIB v5)
 )
 
+# ---------------------------------------------------------------------------
+# Algorithm selection for the benchmark (Etap 5a: Flash/RAM per algorithm).
+# Only the selected algorithm is compiled and linked; NONE = baseline (harness,
+# HAL, printf) to subtract from the other variants.
+# ---------------------------------------------------------------------------
+set(BENCH_ALGO_LIST ALL NONE PQCLEAN_512 PQCLEAN_768 CMOX_KEM_512 CMOX_KEM_768 CMOX_P256 CMOX_X25519)
+set(BENCH_ALGO "ALL" CACHE STRING "Benchmarked algorithm(s): ${BENCH_ALGO_LIST}")
+set_property(CACHE BENCH_ALGO PROPERTY STRINGS ${BENCH_ALGO_LIST})
+if(NOT BENCH_ALGO IN_LIST BENCH_ALGO_LIST)
+    message(FATAL_ERROR "BENCH_ALGO='${BENCH_ALGO}' is not one of: ${BENCH_ALGO_LIST}")
+endif()
+set(BENCH_ALGO_DEFS BENCH_ALGO_STR="${BENCH_ALGO}")
+foreach(_alg PQCLEAN_512 PQCLEAN_768 CMOX_KEM_512 CMOX_KEM_768 CMOX_P256 CMOX_X25519)
+    if(BENCH_ALGO STREQUAL "ALL" OR BENCH_ALGO STREQUAL _alg)
+        list(APPEND BENCH_ALGO_DEFS BENCH_EN_${_alg}=1)
+    endif()
+endforeach()
+message(STATUS "Benchmark algorithms: ${BENCH_ALGO}, PQClean ${PQC_OPT_LEVEL}")
+
 # Add project symbols (macros)
 target_compile_definitions(${CMAKE_PROJECT_NAME} PRIVATE
     PQC_OPT_LEVEL_STR="${PQC_OPT_LEVEL}"
+    ${BENCH_ALGO_DEFS}
 )
 
 # Heap measurement: route every allocator entry point through bench.c wrappers.

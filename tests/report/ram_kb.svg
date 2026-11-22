@@ -1,0 +1,32 @@
+<svg xmlns='http://www.w3.org/2000/svg' width='760' height='316' viewBox='0 0 760 316' font-family='Segoe UI, Helvetica, Arial, sans-serif'>
+<rect width='100%' height='100%' fill='#fcfcfb'/>
+<text x='16' y='26' font-size='16' font-weight='600' fill='#0b0b0b'>Szacowany minimalny RAM algorytmu</text>
+<rect x='16' y='38' width='12' height='12' rx='3' fill='#2a78d6'/><text x='34' y='48' font-size='12' fill='#52514e'>ML-KEM PQClean</text>
+<rect x='148' y='38' width='12' height='12' rx='3' fill='#eb6834'/><text x='166' y='48' font-size='12' fill='#52514e'>ML-KEM CMOX</text>
+<rect x='259' y='38' width='12' height='12' rx='3' fill='#1baf7a'/><text x='277' y='48' font-size='12' fill='#52514e'>ECDH CMOX</text>
+<line x1='230.0' y1='60' x2='230.0' y2='256' stroke='#e4e3df' stroke-width='1'/><text x='230.0' y='272' font-size='11' fill='#52514e' text-anchor='middle'>0</text>
+<line x1='340.0' y1='60' x2='340.0' y2='256' stroke='#e4e3df' stroke-width='1'/><text x='340.0' y='272' font-size='11' fill='#52514e' text-anchor='middle'>5</text>
+<line x1='450.0' y1='60' x2='450.0' y2='256' stroke='#e4e3df' stroke-width='1'/><text x='450.0' y='272' font-size='11' fill='#52514e' text-anchor='middle'>10</text>
+<line x1='560.0' y1='60' x2='560.0' y2='256' stroke='#e4e3df' stroke-width='1'/><text x='560.0' y='272' font-size='11' fill='#52514e' text-anchor='middle'>15</text>
+<line x1='670.0' y1='60' x2='670.0' y2='256' stroke='#e4e3df' stroke-width='1'/><text x='670.0' y='272' font-size='11' fill='#52514e' text-anchor='middle'>20</text>
+<text x='450.0' y='290' font-size='12' fill='#52514e' text-anchor='middle'>RAM [KB]</text>
+<text x='220' y='79.4' font-size='12.5' fill='#0b0b0b' text-anchor='end'>PQClean ML-KEM-512</text>
+<g><title>PQClean ML-KEM-512: 13048 B</title><path d='M230,64 h276.3 a4,4 0 0 1 4,4 v14 a4,4 0 0 1 -4,4 h-276.3 z' fill='#2a78d6'/></g>
+<text x='516.3' y='79.4' font-size='12' fill='#0b0b0b'>12.7</text>
+<text x='220' y='111.4' font-size='12.5' fill='#0b0b0b' text-anchor='end'>PQClean ML-KEM-768</text>
+<g><title>PQClean ML-KEM-768: 19448 B</title><path d='M230,96 h413.8 a4,4 0 0 1 4,4 v14 a4,4 0 0 1 -4,4 h-413.8 z' fill='#2a78d6'/></g>
+<text x='653.8' y='111.4' font-size='12' fill='#0b0b0b'>19.0</text>
+<text x='220' y='143.4' font-size='12.5' fill='#0b0b0b' text-anchor='end'>CMOX ML-KEM-512</text>
+<g><title>CMOX ML-KEM-512: 7968 B</title><path d='M230,128 h167.2 a4,4 0 0 1 4,4 v14 a4,4 0 0 1 -4,4 h-167.2 z' fill='#eb6834'/></g>
+<text x='407.2' y='143.4' font-size='12' fill='#0b0b0b'>7.8</text>
+<text x='220' y='175.4' font-size='12.5' fill='#0b0b0b' text-anchor='end'>CMOX ML-KEM-768</text>
+<g><title>CMOX ML-KEM-768: 10272 B</title><path d='M230,160 h216.7 a4,4 0 0 1 4,4 v14 a4,4 0 0 1 -4,4 h-216.7 z' fill='#eb6834'/></g>
+<text x='456.7' y='175.4' font-size='12' fill='#0b0b0b'>10.0</text>
+<text x='220' y='207.4' font-size='12.5' fill='#0b0b0b' text-anchor='end'>ECDH P-256 (CMOX)</text>
+<g><title>ECDH P-256 (CMOX): 2532 B</title><path d='M230,192 h50.4 a4,4 0 0 1 4,4 v14 a4,4 0 0 1 -4,4 h-50.4 z' fill='#1baf7a'/></g>
+<text x='290.4' y='207.4' font-size='12' fill='#0b0b0b'>2.5</text>
+<text x='220' y='239.4' font-size='12.5' fill='#0b0b0b' text-anchor='end'>ECDH X25519 (CMOX)</text>
+<g><title>ECDH X25519 (CMOX): 1320 B</title><path d='M230,224 h24.4 a4,4 0 0 1 4,4 v14 a4,4 0 0 1 -4,4 h-24.4 z' fill='#1baf7a'/></g>
+<text x='264.4' y='239.4' font-size='12' fill='#0b0b0b'>1.3</text>
+<text x='16' y='306' font-size='11' fill='#52514e'>Bufory kluczy + szczyt stosu + sterta + bufor roboczy CMOX.</text>
+</svg>

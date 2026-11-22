@@ -45,6 +45,49 @@
 #endif
 
 /* ------------------------------------------------------------------------ */
+/* Algorithm selection (Etap 5a: Flash per algorithm).                       */
+/* CMake option BENCH_ALGO=ALL|NONE|PQCLEAN_512|PQCLEAN_768|CMOX_KEM_512|    */
+/* CMOX_KEM_768|CMOX_P256|CMOX_X25519 defines the BENCH_EN_* macros below.   */
+/* Code of disabled algorithms is not compiled, so its library objects are   */
+/* not linked and the Flash difference to BENCH_ALGO=NONE is its footprint.  */
+/* ------------------------------------------------------------------------ */
+#ifndef BENCH_ALGO_STR
+/* built without CMake option -> everything enabled */
+#define BENCH_ALGO_STR "ALL"
+#define BENCH_EN_PQCLEAN_512  1
+#define BENCH_EN_PQCLEAN_768  1
+#define BENCH_EN_CMOX_KEM_512 1
+#define BENCH_EN_CMOX_KEM_768 1
+#define BENCH_EN_CMOX_P256    1
+#define BENCH_EN_CMOX_X25519  1
+#endif
+#ifndef BENCH_EN_PQCLEAN_512
+#define BENCH_EN_PQCLEAN_512  0
+#endif
+#ifndef BENCH_EN_PQCLEAN_768
+#define BENCH_EN_PQCLEAN_768  0
+#endif
+#ifndef BENCH_EN_CMOX_KEM_512
+#define BENCH_EN_CMOX_KEM_512 0
+#endif
+#ifndef BENCH_EN_CMOX_KEM_768
+#define BENCH_EN_CMOX_KEM_768 0
+#endif
+#ifndef BENCH_EN_CMOX_P256
+#define BENCH_EN_CMOX_P256    0
+#endif
+#ifndef BENCH_EN_CMOX_X25519
+#define BENCH_EN_CMOX_X25519  0
+#endif
+
+#define BENCH_EN_PQCLEAN   (BENCH_EN_PQCLEAN_512 || BENCH_EN_PQCLEAN_768)
+#define BENCH_EN_CMOX_KEM  (BENCH_EN_CMOX_KEM_512 || BENCH_EN_CMOX_KEM_768)
+#define BENCH_EN_CMOX_ECC  (BENCH_EN_CMOX_P256 || BENCH_EN_CMOX_X25519)
+
+/* generic helpers are unused in the BENCH_ALGO=NONE baseline build */
+#define BENCH_MAYBE_UNUSED __attribute__((unused))
+
+/* ------------------------------------------------------------------------ */
 /* Shared buffers, sized for the largest parameter set (ML-KEM-768)          */
 /* ------------------------------------------------------------------------ */
 #define KEM_PK_MAX  PQCLEAN_MLKEM768_CLEAN_CRYPTO_PUBLICKEYBYTES   /* 1184 */
@@ -52,11 +95,13 @@
 #define KEM_CT_MAX  PQCLEAN_MLKEM768_CLEAN_CRYPTO_CIPHERTEXTBYTES  /* 1088 */
 #define KEM_SS_LEN  32u
 
+#if BENCH_EN_PQCLEAN || BENCH_EN_CMOX_KEM
 static uint8_t kem_pk[KEM_PK_MAX];
 static uint8_t kem_sk[KEM_SK_MAX];
 static uint8_t kem_ct[KEM_CT_MAX];
 static uint8_t kem_ss_enc[KEM_SS_LEN];
 static uint8_t kem_ss_dec[KEM_SS_LEN];
+#endif
 
 /* ECC: party A (measured) and party B (fixed peer) */
 #define ECC_PRIV_MAX   32u
@@ -64,10 +109,12 @@ static uint8_t kem_ss_dec[KEM_SS_LEN];
 #define ECC_SEC_MAX    64u   /* P-256 secret = X||Y (64 B), X25519: 32 B */
 #define ECC_WORKBUF    4096u /* CMOX working buffer; peak usage is reported */
 
+#if BENCH_EN_CMOX_ECC
 static uint8_t ecc_a_priv[ECC_PRIV_MAX], ecc_a_pub[ECC_PUB_MAX];
 static uint8_t ecc_b_priv[ECC_PRIV_MAX], ecc_b_pub[ECC_PUB_MAX];
 static uint8_t ecc_sec_a[ECC_SEC_MAX], ecc_sec_b[ECC_SEC_MAX];
 static uint8_t ecc_workbuf[ECC_WORKBUF];
+#endif
 static size_t  ecc_workbuf_peak;
 
 /* ------------------------------------------------------------------------ */
@@ -168,7 +215,7 @@ typedef int (*bench_fn_t)(void);
 
 static uint32_t stack_overflow_flag;
 
-static uint32_t __attribute__((noinline)) measure_stack(bench_fn_t fn, int *ret)
+static uint32_t __attribute__((noinline)) BENCH_MAYBE_UNUSED measure_stack(bench_fn_t fn, int *ret)
 {
   uint32_t *bottom = &_sstack;
   uint32_t *sp     = (uint32_t *)__get_MSP();
@@ -195,8 +242,8 @@ static uint32_t __attribute__((noinline)) measure_stack(bench_fn_t fn, int *ret)
 /* ------------------------------------------------------------------------ */
 static uint32_t bench_errors;
 
-static void bench_op(const char *lib, const char *alg, const char *op,
-                     bench_fn_t fn, uint32_t iters)
+static void BENCH_MAYBE_UNUSED bench_op(const char *lib, const char *alg, const char *op,
+                                        bench_fn_t fn, uint32_t iters)
 {
   uint32_t cmin = UINT32_MAX, cmax = 0u;
   uint64_t csum = 0u;
@@ -248,7 +295,7 @@ static void bench_op(const char *lib, const char *alg, const char *op,
          (unsigned long)stack, (unsigned long)heap, (unsigned long)wbuf, err);
 }
 
-static void check_equal(const char *what, const uint8_t *a, const uint8_t *b, size_t n)
+static void BENCH_MAYBE_UNUSED check_equal(const char *what, const uint8_t *a, const uint8_t *b, size_t n)
 {
   int ok = (memcmp(a, b, n) == 0);
   if (!ok) { bench_errors++; }
@@ -258,18 +305,23 @@ static void check_equal(const char *what, const uint8_t *a, const uint8_t *b, si
 /* ======================================================================== */
 /* PQClean ML-KEM                                                            */
 /* ======================================================================== */
+#if BENCH_EN_PQCLEAN_512
 static int pqclean512_keygen(void) { return PQCLEAN_MLKEM512_CLEAN_crypto_kem_keypair(kem_pk, kem_sk); }
 static int pqclean512_enc(void)    { return PQCLEAN_MLKEM512_CLEAN_crypto_kem_enc(kem_ct, kem_ss_enc, kem_pk); }
 static int pqclean512_dec(void)    { return PQCLEAN_MLKEM512_CLEAN_crypto_kem_dec(kem_ss_dec, kem_ct, kem_sk); }
+#endif
 
+#if BENCH_EN_PQCLEAN_768
 static int pqclean768_keygen(void) { return PQCLEAN_MLKEM768_CLEAN_crypto_kem_keypair(kem_pk, kem_sk); }
 static int pqclean768_enc(void)    { return PQCLEAN_MLKEM768_CLEAN_crypto_kem_enc(kem_ct, kem_ss_enc, kem_pk); }
 static int pqclean768_dec(void)    { return PQCLEAN_MLKEM768_CLEAN_crypto_kem_dec(kem_ss_dec, kem_ct, kem_sk); }
+#endif
 
 /* ======================================================================== */
 /* ST CMOX ML-KEM (based on X-CUBE-CRYPTOLIB example ML-KEM_KeyGen_Enc_Dec)  */
 /* Random seed generation is included in the measured time, like in PQClean */
 /* ======================================================================== */
+#if BENCH_EN_CMOX_KEM
 typedef struct
 {
   cmox_pqc_kem_keygen_algo_t keygen;
@@ -322,10 +374,12 @@ static int cmox_kem_dec(void)
   cmox_pqc_kem_cleanup(&ctx);
   return (rv == CMOX_PQC_SUCCESS) ? 0 : (int)rv;
 }
+#endif /* BENCH_EN_CMOX_KEM */
 
 /* ======================================================================== */
 /* ST CMOX ECDH (based on X-CUBE-CRYPTOLIB example ECDH_SharedSecretGeneration) */
 /* ======================================================================== */
+#if BENCH_EN_CMOX_ECC
 typedef struct
 {
   const char *name;
@@ -371,10 +425,12 @@ static int ecdh_into(const uint8_t *priv, const uint8_t *peer_pub, uint8_t *secr
 
 static int ecc_keygen_a(void) { return ecc_keygen_into(ecc_a_priv, ecc_a_pub); }
 static int ecdh_a(void)       { return ecdh_into(ecc_a_priv, ecc_b_pub, ecc_sec_a); }
+#endif /* BENCH_EN_CMOX_ECC */
 
 /* ======================================================================== */
 /* Benchmark suites                                                          */
 /* ======================================================================== */
+#if BENCH_EN_PQCLEAN
 static void suite_pqclean(const char *alg, bench_fn_t kg, bench_fn_t enc, bench_fn_t dec)
 {
   memset(kem_ss_enc, 0, sizeof(kem_ss_enc));
@@ -384,7 +440,9 @@ static void suite_pqclean(const char *alg, bench_fn_t kg, bench_fn_t enc, bench_
   bench_op("PQClean", alg, "decaps", dec, BENCH_ITER);
   check_equal(alg, kem_ss_enc, kem_ss_dec, KEM_SS_LEN);
 }
+#endif
 
+#if BENCH_EN_CMOX_KEM
 static void suite_cmox_kem(const char *alg, const cmox_kem_set_t *set)
 {
   cmox_kem = set;
@@ -395,7 +453,9 @@ static void suite_cmox_kem(const char *alg, const cmox_kem_set_t *set)
   bench_op("CMOX", alg, "decaps", cmox_kem_dec,    BENCH_ITER);
   check_equal(alg, kem_ss_enc, kem_ss_dec, KEM_SS_LEN);
 }
+#endif
 
+#if BENCH_EN_CMOX_ECC
 static void suite_ecdh(const ecc_set_t *set)
 {
   ecc = set;
@@ -417,6 +477,7 @@ static void suite_ecdh(const ecc_set_t *set)
   if (ecdh_into(ecc_b_priv, ecc_a_pub, ecc_sec_b) != 0) { bench_errors++; }
   check_equal(set->name, ecc_sec_a, ecc_sec_b, set->cmp_len);
 }
+#endif
 
 /* ======================================================================== */
 static void print_header(void)
@@ -433,6 +494,7 @@ static void print_header(void)
          (acr & FLASH_ACR_ICEN)   ? "on" : "off",
          (acr & FLASH_ACR_DCEN)   ? "on" : "off");
   printf(" Compiler        : GCC %s\r\n", __VERSION__);
+  printf(" Algorithms      : %s\r\n", BENCH_ALGO_STR);
   printf(" PQClean opt     : %s   (bench harness: build type)\r\n", PQC_OPT_LEVEL_STR);
   printf(" CMOX            : libSTM32Cryptographic_CM4.a (X-CUBE-CRYPTOLIB v5)\r\n");
   printf(" Iterations      : %lu per operation\r\n", (unsigned long)BENCH_ITER);
@@ -458,21 +520,29 @@ void bench_run(void)
 {
   /* CMOX algorithm handles are 'extern const' objects of the library, so these
      tables are filled at run time (not allowed in a static initializer in C). */
+#if BENCH_EN_CMOX_KEM_512
   const cmox_kem_set_t cmox_mlkem512 =
   {
     CMOX_PQC_ML_KEM_512_KEYGEN_ALGO, CMOX_PQC_ML_KEM_512_ENC_ALGO, CMOX_PQC_ML_KEM_512_DEC_ALGO,
     CMOX_PQC_ML_KEM_512_PUBKEY_LEN, CMOX_PQC_ML_KEM_512_PRIVKEY_LEN, CMOX_PQC_ML_KEM_512_CIPHERTEXT_LEN
   };
+#endif
+#if BENCH_EN_CMOX_KEM_768
   const cmox_kem_set_t cmox_mlkem768 =
   {
     CMOX_PQC_ML_KEM_768_KEYGEN_ALGO, CMOX_PQC_ML_KEM_768_ENC_ALGO, CMOX_PQC_ML_KEM_768_DEC_ALGO,
     CMOX_PQC_ML_KEM_768_PUBKEY_LEN, CMOX_PQC_ML_KEM_768_PRIVKEY_LEN, CMOX_PQC_ML_KEM_768_CIPHERTEXT_LEN
   };
+#endif
   /* P-256 ECDH secret from CMOX is X||Y (64 B); the shared key is X (32 B) */
+#if BENCH_EN_CMOX_P256
   const ecc_set_t p256_rt   = { "P-256",  CMOX_ECC_SECP256R1_HIGHMEM, CMOX_ECC_SECP256R1_PRIVKEY_LEN,
                                 CMOX_ECC_SECP256R1_PUBKEY_LEN, CMOX_ECC_SECP256R1_SECRET_LEN, 32u };
+#endif
+#if BENCH_EN_CMOX_X25519
   const ecc_set_t x25519_rt = { "X25519", CMOX_ECC_CURVE25519, CMOX_ECC_CURVE25519_PRIVKEY_LEN,
                                 CMOX_ECC_CURVE25519_PUBKEY_LEN, CMOX_ECC_CURVE25519_SECRET_LEN, 32u };
+#endif
 
   setvbuf(stdout, NULL, _IONBF, 0);   /* no hidden malloc for stdout buffer */
   dwt_init();
@@ -481,12 +551,24 @@ void bench_run(void)
 
   print_header();
 
+#if BENCH_EN_PQCLEAN_512
   suite_pqclean("ML-KEM-512", pqclean512_keygen, pqclean512_enc, pqclean512_dec);
+#endif
+#if BENCH_EN_PQCLEAN_768
   suite_pqclean("ML-KEM-768", pqclean768_keygen, pqclean768_enc, pqclean768_dec);
+#endif
+#if BENCH_EN_CMOX_KEM_512
   suite_cmox_kem("ML-KEM-512", &cmox_mlkem512);
+#endif
+#if BENCH_EN_CMOX_KEM_768
   suite_cmox_kem("ML-KEM-768", &cmox_mlkem768);
+#endif
+#if BENCH_EN_CMOX_P256
   suite_ecdh(&p256_rt);
+#endif
+#if BENCH_EN_CMOX_X25519
   suite_ecdh(&x25519_rt);
+#endif
 
   printf("\r\nstack = peak bytes below caller SP ('!' = reached _sstack, increase _Min_Stack_Size)\r\n");
   printf("heap  = peak malloc bytes, wbuf = CMOX ECC working buffer peak (of %u B)\r\n",
